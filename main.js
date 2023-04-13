@@ -210,8 +210,12 @@ class GameState {
 		this.targets.push(new Target(13, -61.25, "Kingstown", "Saint Vincent and the Grenadines"));
 		this.targets.push(new Target(25, -77.25, "Nassau", "Bahamas","New Providence"));
 		this.targets.push(new Target(12.25, -69, "Willemstad", "Curaçao"));
-
-
+		
+		this.targets.push(new Target(17.25,-62.75,"Basseterre","Saint Kitts and Nevis"));
+		this.targets.push(new Target(13,-59.5,"Bridgetown","Barbados","St Michael"));
+		this.targets.push(new Target(14,-61,"Castries","Saint Lucia"));
+		this.targets.push(new Target(12,-61.75,"St. George's","Grenada"));
+		this.targets.push(new Target(17,-62,"St. John's","Antigua and Barbuda"));
 	}
 
 	loadSouthAmerica()
