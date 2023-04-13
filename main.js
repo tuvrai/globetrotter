@@ -262,6 +262,40 @@ class GameState {
 		this.targets.push(new Target(55.75, 37.5,"Moscow","Russia"));
 		this.targets.push(new Target(40.5, -3.5,"Madrid","Spain"));
 		this.targets.push(new Target(78.25, 15.5, "Longyearbyen", "Norway","Svalbard"))
+
+		this.targets.push(new Target(52.5,5,"Amsterdam","The Netherlands","North Holland"));
+		this.targets.push(new Target(42.5,1.5,"Andorra la Vella","Andorra"));
+		this.targets.push(new Target(52.5,13.5,"Berlin","Germany"));
+		this.targets.push(new Target(47,7.5,"Bern","Switzerland"));
+		this.targets.push(new Target(51,4.25,"Brussels","Belgium"));
+		this.targets.push(new Target(44.5,26,"Bucharest","Romania"));
+		this.targets.push(new Target(47.5,19,"Budapest","Hungary"));
+		this.targets.push(new Target(47,29,"Chișinău","Moldova"));
+		this.targets.push(new Target(55.75,12.5,"Copenhagen","Denmark"));
+		this.targets.push(new Target(53.25,-6.25,"Dublin","Ireland","Leinster"));
+		this.targets.push(new Target(50.5,30.5,"Kyiv","Ukraine"));
+		this.targets.push(new Target(38.75,-9.25,"Lisbon","Portugal"));
+		this.targets.push(new Target(46.25,14.5,"Ljubljana","Slovenia")); //+0.25 N
+		this.targets.push(new Target(51.5,0,"City of London","United Kingdom","Greater London"));
+		this.targets.push(new Target(49.75,6,"Luxembourg City","Luxembourg")); //+0.25 N
+
+		this.targets.push(new Target(53.75,27.5,"Minsk","Belarus"));
+		this.targets.push(new Target(43.75,7.5,"Monte Carlo","Monaco"));
+		this.targets.push(new Target(42.5,19.25,"Podgorica","Montenegro"));
+		this.targets.push(new Target(57, 24,"Riga","Latvia"));
+		this.targets.push(new Target(44,12.5,"San Marino","San Marino"));
+		this.targets.push(new Target(44,18.5,"Sarajevo","Bosnia and Herzegovina"));
+		this.targets.push(new Target(42,21.5,"Skopje","North Macedonia"));
+		this.targets.push(new Target(42.75,23.25,"Sofia","Bulgaria"));
+		this.targets.push(new Target(59.5,24.75,"Tallinn","Estonia","Harju"));
+		this.targets.push(new Target(47,9.75,"Vaduz","Liechtenstein")); //+0.25 E
+		this.targets.push(new Target(36,14.5,"Valletta","Malta","South Eastern"));
+		this.targets.push(new Target(54.75,25.25,"Vilnius","Lithuania"));
+		this.targets.push(new Target(45.75,16,"Zagreb","Croatia"));
+		this.targets.push(new Target(42.75,21.25,"Pristina","Kosovo"));
+		this.targets.push(new Target(56,-3.25,"Edinburgh","United Kingdom","Scotland"));
+		this.targets.push(new Target(54.5,-5.75,"Belfast","United Kingdom","Northern Ireland")); //-0.25 W
+		this.targets.push(new Target(51.5,-3,"Cardiff","United Kingdom","Wales"));
 	}
 
 	loadAfrica()
