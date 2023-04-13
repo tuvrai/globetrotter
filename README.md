@@ -34,4 +34,4 @@ To get the coordinates of the particular location, just click wherever it is on 
 If you have coordinates in degree / minutes notation, you can still convert it to numerical. For example, the location of 25 degree and 47 minutes north is 25.7833 (25 + 47/60), so we can round it to 25.75.
 
 The southern hemisphere latitude is written with negative, for example 25.5 south is simply -25.5. Same goes with western hempisphere longitude. North hemisphere latitude and eastern hemisphere longitude is positive.
-
+The hemisphere of the point is determined by whether it is above or down to equator and whether it is left or right to prime meridian.
