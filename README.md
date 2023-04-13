@@ -2,7 +2,9 @@
 Game playable in browser, where you need to indicate on the world map the location of given place. It is based on the classic flash game and in honor for it is now playable in HTML5 canvas.
 
 ## Origins
-It is based on a flash game _Globetrotter XL_. [Here's the gameplay](https://www.youtube.com/watch?v=zd8Ka2Hzst0) (With quite good score BTW). Unfortunately, now this game is not as easy to play and it needed some refreshment anyway. My goal is to provide a neat HTML5 application, which might be useful for teaching geography with fun.
+It is based on a flash game _Globetrotter XL_. [Here's the gameplay](https://www.youtube.com/watch?v=zd8Ka2Hzst0) (With quite good score BTW). Unfortunately, now this game is not as easy to play and it needed some refreshment anyway. 
+
+My goal is to provide a neat HTML5 application, which might be useful for teaching geography with fun.
 
 ## Gameplay
 In the game, we need to click as close as we can to given location. The closer we are, the more points we get. There is also time limit for every location which depends on level and the quicker we are, the more points we get for the time also.
@@ -20,6 +22,9 @@ Allows zooming in / out the map
 
 ### R ###
 Resests the zoom
+
+### Enter ###
+Moves to next location, after a guess (does the same as _next_ button)
 
 ## Custom locations
 Feel free to add your own locations. Just add new target in the `loadTargets` function, with particular data - name, country, region, latitude and longitude values of the location.
