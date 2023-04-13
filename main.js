@@ -195,9 +195,8 @@ class GameState {
 		this.targets.push(new Target(47.5, -52.75,"St. John's","Canada","Newfoundland"));
 		this.targets.push(new Target(19.5, -99,"Ciudad de México","Mexico"));
 		this.targets.push(new Target(23, -82.25, "Havana", "Cuba"));
-		this.targets.push(new Target(10, -84, "San José", "Costa Rica"));
 		this.targets.push(new Target(9, -79.5, "Panama City", "Panama"));
-		this.targets.push(new Target(10, 84, "San José", "Costa Rica"));
+		this.targets.push(new Target(10, -84, "San José", "Costa Rica"));
 		this.targets.push(new Target(17.25, -88.75, "Belmopan", "Belize","Cayo"));
 		this.targets.push(new Target(12, -86.25,"Managua","Nicaragua"));
 		this.targets.push(new Target(13.75, -89.25, "San Salvador", "El Salvador"));
@@ -307,7 +306,7 @@ class GameState {
 		this.targets.push(new Target(16.75, 96,"Yangon","Myanmar"));
 		this.targets.push(new Target(48, 107,"Ulaanbaatar","Mongolia"));
 		this.targets.push(new Target(29.5, 106.5,"Chongqing","China","Yuzhong"));
-		this.targets.push(new Target(31, 121,5,"Shanghai","China"));
+		this.targets.push(new Target(31, 121.5,"Shanghai","China"));
 		this.targets.push(new Target(40, 116.5,"Beijing","China"));
 		this.targets.push(new Target(1.25, 104,"Singapore","Singapore"));
 		this.targets.push(new Target(-6.25, 107,"Jakarta","Indonesia"));
@@ -346,7 +345,7 @@ class GameState {
 
 	getLevels(levelCount){
 		const levelArray = [
-			new Level(1, 350, 12),
+			new Level(1, 350, 1211111112312312312),
 			new Level(2, 550, 11),
 			new Level(3, 750, 10),
 			new Level(4, 1000, 10),
