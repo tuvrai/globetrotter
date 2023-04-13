@@ -251,11 +251,11 @@ class GameState {
 		this.targets.push(new Target(38, 23.75,"Athens","Greece", "Attica"));
 		this.targets.push(new Target(42, 12.5,"Rome","Italy", "Latium"));
 		this.targets.push(new Target(60.25, 25,"Helsinki","Finland", "Uusimaa"));
-		this.targets.push(new Target(59.5, 18,"Stockholm","Sweden", "Uusimaa"));
+		this.targets.push(new Target(59.5, 18,"Stockholm","Sweden"));
 		this.targets.push(new Target(60,10.75,"Oslo","Norway", "Eastern Norway"));
 		this.targets.push(new Target(49, 2.5,"Paris","France"));
 		this.targets.push(new Target(48.25, 11.5,"Munich","Germany","Bavaria"));
-		this.targets.push(new Target(51.5,-2.5,"Bristol","United Kingdom", "Eastern Norway"));
+		this.targets.push(new Target(51.5,-2.5,"Bristol","United Kingdom"));
 		this.targets.push(new Target(64.25,-22,"Reykjavík","Iceland","Höfuðborgarsvæðið"));
 		this.targets.push(new Target(47.25, 8.5,"Zürich","Switzerland"));
 		this.targets.push(new Target(54.75, 56,"Ufa","Russia","Bashkortostan"));
@@ -329,7 +329,7 @@ class GameState {
 		this.targets.push(new Target(-22.5,17,"Windhoek","Namibia","Khomas"));
 		this.targets.push(new Target(6.75,-5.25,"Yamoussoukro","Côte d'Ivoire"));
 	}
-	
+	//this.targets.push(new Target(2,1,"aaa","bbb"));
 	loadAsia()
 	{
 		this.targets.push(new Target(51, 71.5,"Astana","Kazakhstan"));
@@ -386,10 +386,12 @@ class GameState {
 		this.targets.push(new Target(25.25,51.5,"Doha","Qatar"));
 		this.targets.push(new Target(31.75,35.25,"Jerusalem"));
 		this.targets.push(new Target(32,34.75,"Tel Aviv","Israel"));
+		this.targets.push(new Target(32,35.5,"Jericho","Palestine"));
 		this.targets.push(new Target(29.25,48,"Kuwait City","Kuwait"));
 		this.targets.push(new Target(26.25,50.5,"Manama","Bahrain"));
 		this.targets.push(new Target(24.5,46.75,"Riyadh","Saudi Arabia"));
 		this.targets.push(new Target(15.25,44.25,"Sana'a","Yemen"));
+		this.targets.push(new Target(35.25,33.5,"Nicosia","Republic of Cyprus"));
 	}
 
 	loadOceania()
@@ -1275,11 +1277,11 @@ var imageNoBorders = 'worldmap5_noborders.jpg';
 document.addEventListener('DOMContentLoaded',function(){
 	globetrotter = new Globetrotter();
 	const img1 = document.querySelector('.content-image-worldmap')
-	img1.src = `G:\\projekty\\js\\globetrotter\\img\\${imageBorders}`;
+	img1.src = `.\\img\\${imageBorders}`;
 	document.body.append(img1);
 
 	const img2 = document.querySelector('.content-image-worldmap-noborders')
-	img2.src = `G:\\projekty\\js\\globetrotter\\img\\${imageNoBorders}`;
+	img2.src = `.\\img\\${imageNoBorders}`;
 	document.body.append(img2);
 
 	img1.onload = ()=>{
