@@ -281,8 +281,55 @@ class GameState {
 		this.targets.push(new Target(4,11.5,"Yaoundé","Cameroon","Central"));
 		this.targets.push(new Target(30,31,"Gisa","Egypt"));
 		this.targets.push(new Target(-4.25,15.25,"Brazzaville","Congo"));
-	}
 
+		this.targets.push(new Target(36.75,3,"Algiers","Algeria"));
+		this.targets.push(new Target(33,13.25,"Tripoli","Libya","Tripolitania"));
+		this.targets.push(new Target(12.75,-8,"Bamako","Mali"));
+		this.targets.push(new Target(4.25,18.75,"Bangi","Central African Republic")); //+0.25 E
+		this.targets.push(new Target(15.5,32.5,"Khartoum","Sudan"));
+		this.targets.push(new Target(18,-16,"Nouakchott","Mauritania"));
+
+		this.targets.push(new Target(9,7.5,"Abuja","Nigeria"));
+		this.targets.push(new Target(9.5,-13.75,"Conakry","Guinea"));
+		this.targets.push(new Target(11.75,-15.5,"Bissau","Guinea-Bissau"));
+		this.targets.push(new Target(9,38.75,"Addis Ababa","Ethiopia"));
+		this.targets.push(new Target(14.75,-17.5,"Dakar","Senegal"));
+		this.targets.push(new Target(12.5,-1.5,"Ouagadougou","Burkina Faso","Centre"));
+
+		this.targets.push(new Target(15.25,39,"Asmara","Eritrea","Central"));
+		this.targets.push(new Target(5.5,-0.25,"Accra","Ghana"));
+		this.targets.push(new Target(13.5,-16.5,"Banjul","Gambia"));
+		this.targets.push(new Target(11.5,43.25,"Djibouti City","Djibouti"));
+		this.targets.push(new Target(8.5,-13.25,"Freetown","Sierra Leone","Western Area"));
+		this.targets.push(new Target(-24.75,26,"Gaborone","Botswana"));
+		this.targets.push(new Target(-3.5,30,"Gitega","Burundi"));
+		this.targets.push(new Target(-17.75,31,"Harare","Zimbabwe"));
+		this.targets.push(new Target(0.25,32.5,"Kampala","Uganda"));
+		this.targets.push(new Target(-2,30,"Kigali","Rwanda"));
+
+		this.targets.push(new Target(0.5,9.5,"Libreville","Gabon","Estuaire"));
+		this.targets.push(new Target(6,1.25,"Lomé","Togo","Maritime"));
+		this.targets.push(new Target(-8.75,13.25,"Luanda","Angola"));
+		this.targets.push(new Target(-15.5,28.25,"Lusaka","Zambia"));
+		this.targets.push(new Target(3.75,8.75,"Malabo","Equatorial Guinea","Bioko Norte"));
+		this.targets.push(new Target(-26,32.5,"Maputo","Mozambique"));
+		this.targets.push(new Target(-29.5,27.75,"Maseru","Lesotho"));
+		this.targets.push(new Target(-26.25,31.25,"Mbabane","Eswatini"));
+		this.targets.push(new Target(6.25,-10.75,"Monrovia","Liberia"));
+		this.targets.push(new Target(-11.75,43.25,"Moroni","Comoros","Grande Comore"));
+		this.targets.push(new Target(-1.25,36.75,"Nairobi","Kenya"));
+		this.targets.push(new Target(-4.5,15.25,"Kinshasa","Democratic Rep. of the Congo"));
+		this.targets.push(new Target(0.5,25.25,"Kisangani","Democratic Rep. of the Congo"));
+
+		this.targets.push(new Target(6.5,2.5,"Porto-Novo","Benin","Ouémé"));
+		this.targets.push(new Target(15,-23.5,"Praia","Cape Verde","Santiago"));
+		this.targets.push(new Target(34,-6.75,"Rabat","Morocco"));
+		this.targets.push(new Target(0.25,6.75,"São Tomé","São Tomé and Príncipe"));
+		this.targets.push(new Target(-4.5,55.5,"Victoria","Seychelles","Mahé"));
+		this.targets.push(new Target(-22.5,17,"Windhoek","Namibia","Khomas"));
+		this.targets.push(new Target(6.75,-5.25,"Yamoussoukro","Côte d'Ivoire"));
+	}
+	
 	loadAsia()
 	{
 		this.targets.push(new Target(51, 71.5,"Astana","Kazakhstan"));
@@ -311,6 +358,38 @@ class GameState {
 		this.targets.push(new Target(1.25, 104,"Singapore","Singapore"));
 		this.targets.push(new Target(-6.25, 107,"Jakarta","Indonesia"));
 		this.targets.push(new Target(35.5, 140,"Tokyo","Japan"));
+
+		this.targets.push(new Target(39,125.75,"Pyongyang","North Korea"));
+		this.targets.push(new Target(37.5,127,"Seoul","South Korea"));
+		this.targets.push(new Target(25,121.5,"Taipei","Republic of China","Taiwan"));
+		this.targets.push(new Target(23.75,90.25,"Dhaka","Bangladesh"));
+		this.targets.push(new Target(33.75,73,"Islamabad","Pakistan"));
+		this.targets.push(new Target(27.75,85.25,"Kathmandu","Nepal","Bagmati"));
+		this.targets.push(new Target(4.25,73.5,"Malé","Maldives"));
+		this.targets.push(new Target(7,80,"Sri Jayawardenepura Kotte","Sri Lanka","Western"));
+		this.targets.push(new Target(4.75,115,"Bandar Seri Begawan","Brunei"));
+		this.targets.push(new Target(13.75,100.5,"Bangkok","Thailand"));
+
+		this.targets.push(new Target(-8.75,125.5,"Dili","East Timor")); //-0.25 S
+		this.targets.push(new Target(21,105.75,"Hanoi","Vietnam","Red River Delta"));
+		this.targets.push(new Target(3.25,101.75,"Kuala Lumpur","Malaysia"));
+		this.targets.push(new Target(14.5,121,"Manila","Philippines"));
+		this.targets.push(new Target(19.75,96,"Naypyidaw","Myanmar"));
+		this.targets.push(new Target(11.5,105,"Phnom Penh","Cambodia"));
+		this.targets.push(new Target(18,102.5,"Vientiane","Laos"));
+		
+		this.targets.push(new Target(24.5,54.25,"Abu Dhabi","United Arab Emirates"));
+		this.targets.push(new Target(32,36,"Amman","Jordan"));
+		this.targets.push(new Target(40,33,"Ankara","Turkey","Central Anatolia"));
+		this.targets.push(new Target(34,35.5,"Beirut","Lebanon"));
+		this.targets.push(new Target(33.5,36.25,"Damascus","Syria"));
+		this.targets.push(new Target(25.25,51.5,"Doha","Qatar"));
+		this.targets.push(new Target(31.75,35.25,"Jerusalem"));
+		this.targets.push(new Target(32,34.75,"Tel Aviv","Israel"));
+		this.targets.push(new Target(29.25,48,"Kuwait City","Kuwait"));
+		this.targets.push(new Target(26.25,50.5,"Manama","Bahrain"));
+		this.targets.push(new Target(24.5,46.75,"Riyadh","Saudi Arabia"));
+		this.targets.push(new Target(15.25,44.25,"Sana'a","Yemen"));
 	}
 
 	loadOceania()
@@ -323,7 +402,19 @@ class GameState {
 		this.targets.push(new Target(-9.5, 147.25, "Port Moresby", "Papua New Guinea"));
 	}
 
+	loadCustom(){
+		this.targets.push(new Target(7,80,"Sri Jayawardenepura Kotte","Sri Lanka","Western"));
+		this.targets.push(new Target(4.75,115,"Bandar Seri Begawan","Brunei"));
+		this.targets.push(new Target(4.75,115,"Bandar Seri Begawan","Brunei"));
+		this.targets.push(new Target(4.75,115,"Bandar Seri Begawan","Brunei"));
+		this.targets.push(new Target(4.75,115,"Bandar Seri Begawan","Brunei"));
+		this.targets.push(new Target(4.75,115,"Bandar Seri Begawan","Brunei"));
+		this.targets.push(new Target(4.75,115,"Bandar Seri Begawan","Brunei"));
+	}
+
 	loadTargets(){
+		//this.loadCustom();
+		//return;
 		this.loadNorthAmerica();
 		this.loadSouthAmerica();
 		this.loadAfrica();
