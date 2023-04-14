@@ -585,8 +585,7 @@ class GameState {
 		for (let i = 0 ; i < levelCount; i++)
 		{
 			const targetCount = i+2;
-			levelArray[i].WithPoints(this.targets);
-			//levelArray[i].WithPoints(this.grabTargets(currentId, targetCount));
+			levelArray[i].WithPoints(this.grabTargets(currentId, targetCount));
 			currentId = currentId + targetCount + 1;
 		}
 		return levelArray.slice(0, levelCount);
