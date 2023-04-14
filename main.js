@@ -188,12 +188,23 @@ class GameState {
 		this.targets.push(new Target(25.75, -80.25,"Miami","USA","Florida"));
 		this.targets.push(new Target(35, -85.25,"Chattanooga","USA","Tennessee"));
 		this.targets.push(new Target(58.25, -134.5,"Juneau","USA","Alaska"));
+		this.targets.push(new Target(61.25, -150,"Anchorage","USA","Alaska"));
 
-		this.targets.push(new Target(43.5, -79.5,"Toronto","Canada","Quebec"));
+		this.targets.push(new Target(43.5, -79.5,"Toronto","Canada","Ontario"));
+		this.targets.push(new Target(45.5, -75.75,"Ottawa","Canada","Ontario"));
+		this.targets.push(new Target(45.5, -73.5,"Montreal","Canada","Quebec"));
 		this.targets.push(new Target(53.5, -113.5,"Edmonton","Canada","Alberta"));
 		this.targets.push(new Target(49.25, -123,"Vancouver","Canada","British Columbia"));
 		this.targets.push(new Target(47.5, -52.75,"St. John's","Canada","Newfoundland"));
+		this.targets.push(new Target(82.5,-62.5,"Alert","Canada","Nunavut"));
+
 		this.targets.push(new Target(19.5, -99,"Ciudad de México","Mexico"));
+		this.targets.push(new Target(24,-110.25,"La Paz","Mexico","Baja California Sur"));
+		this.targets.push(new Target(25.75, -100.25,"Monterrey","Mexico","Nuevo León"));
+		this.targets.push(new Target(21, -89.5,"Mérida","Mexico", "Yucatán"));
+		this.targets.push(new Target(31.75, -106.5,"Ciudad Juárez","Mexico", "Chihuahua"));
+		this.targets.push(new Target(20.75, -103.25,"Guadalajara","Mexico", "Jalisco"));
+
 		this.targets.push(new Target(23, -82.25, "Havana", "Cuba"));
 		this.targets.push(new Target(9, -79.5, "Panama City", "Panama"));
 		this.targets.push(new Target(10, -84, "San José", "Costa Rica"));
@@ -222,8 +233,12 @@ class GameState {
 	{
 		this.targets.push(new Target(6.75, -58,"Georgetown","Guyana","Demerara-Mahaica"));
 		this.targets.push(new Target(10.5, -67,"Caracas","Venezuela"));
+		this.targets.push(new Target(10.75, -71.75,"Maracaibo","Venezuela","Zulia"));
 		this.targets.push(new Target(4.5, -74,"Bogota","Colombia"));
+		this.targets.push(new Target(11, -74.75,"Baranquilla","Colombia","Atlántico"));
+		this.targets.push(new Target(6.25, -75.5,"Medellín","Colombia","Antioquia"));
 		this.targets.push(new Target(-0.25, -78.5,"Quito","Ecuador"));
+		this.targets.push(new Target(-2.25, -80,"Guayaquil","Ecuador","Guayas"));
 		this.targets.push(new Target(-12, -77,"Lima","Peru"));
 		this.targets.push(new Target(-3.75, -73.25,"Iquitos","Peru","Loreto"));
 		this.targets.push(new Target(-33.5, -70.75,"Santiago","Chile","Magallanes"));
@@ -231,8 +246,13 @@ class GameState {
 		this.targets.push(new Target(-15.75, -48,"Brasilia","Brazil","Central-West"));
 		this.targets.push(new Target(-3.75, -38.5,"Fortaleza","Brazil","Ceará"));
 		this.targets.push(new Target(-23, -43.25,"Rio de Janeiro","Brazil"));
+		this.targets.push(new Target(-13, -38.5,"Salvador","Brazil","Bahia"));
+		this.targets.push(new Target(-3, -60,"Manaus","Brazil","Amazonas"));
+		this.targets.push(new Target(-23.5, -46.75,"São Paulo","Brazil"));
 		this.targets.push(new Target(-25.25, -57.5,"Asuncion","Paraguay"));
 		this.targets.push(new Target(-34.75, -58.5,"Buenos Aires","Argentina"));
+		this.targets.push(new Target(-31.5, -64.25,"Córdoba","Argentina"));
+		this.targets.push(new Target(-46, -67.5,"Comodoro Rivadavia","Argentina","Chubut"));
 		this.targets.push(new Target(-34.75, -56.25,"Montevideo","Uruguay"));
 		this.targets.push(new Target(5, -52.25,"Cayenne","French Guiana"));
 		this.targets.push(new Target(5.75, -55.25,"Paramaribo","Suriname"));
@@ -246,8 +266,8 @@ class GameState {
 	{
 		this.targets.push(new Target(50.25,19,"Katowice","Poland","Śląskie"));
 		this.targets.push(new Target(52.25,21,"Warsaw","Poland","Mazowieckie"));
-		this.targets.push(new Target(48,17.25,"Bratislava","Slovakia"));
-		this.targets.push(new Target(48,16.5,"Vienna","Austria"));
+		this.targets.push(new Target(48,17,"Bratislava","Slovakia"));
+		this.targets.push(new Target(48.25,16.5,"Vienna","Austria"));
 		this.targets.push(new Target(50,14.5,"Prague","Czechia"));
 		this.targets.push(new Target(48,37.5,"Donetsk","Ukraine"));
 		this.targets.push(new Target(41.25,19.75,"Tirane","Albania"));
@@ -440,21 +460,21 @@ class GameState {
 		this.targets.push(new Target(-34, 151.25,"Sydney","Australia","New South Wales"));
 		this.targets.push(new Target(21.25, -157.75,"Honolulu","USA","Hawaii"));
 		this.targets.push(new Target(-9.5, 147.25, "Port Moresby", "Papua New Guinea"));
+
+		this.targets.push(new Target(1.25,173,"South Tarawa","Kiribati"));
+		this.targets.push(new Target(-9.5,160,"Honiara","Solomon Islands"));
+		this.targets.push(new Target(-21.25,-175.25,"Nuku'alofa","Tonga","Tongatapu"));
+		this.targets.push(new Target(-8.5,179.25,"Funafuti","Tuvalu"));
+		this.targets.push(new Target(-0.5,167,"Yaren","Nauru"));
+		this.targets.push(new Target(7,171.25,"Majuro","Marshall Islands","Ratak Chain"));
+		this.targets.push(new Target(-17.75,168.25,"Port Vila","Vanuatu","Shefa"));
+		this.targets.push(new Target(7.5,134.75,"Ngerulmud","Palau","Melekeok"));
+		this.targets.push(new Target(-13.75,-171.75,"Apia","Samoa","Tuamasaga"));
+		this.targets.push(new Target(7,158.25,"Palikir","Micronesia","Pohnpei"));
 	}
 
-	loadCustom(){
-		this.targets.push(new Target(7,80,"Sri Jayawardenepura Kotte","Sri Lanka","Western"));
-		this.targets.push(new Target(4.75,115,"Bandar Seri Begawan","Brunei"));
-		this.targets.push(new Target(4.75,115,"Bandar Seri Begawan","Brunei"));
-		this.targets.push(new Target(4.75,115,"Bandar Seri Begawan","Brunei"));
-		this.targets.push(new Target(4.75,115,"Bandar Seri Begawan","Brunei"));
-		this.targets.push(new Target(4.75,115,"Bandar Seri Begawan","Brunei"));
-		this.targets.push(new Target(4.75,115,"Bandar Seri Begawan","Brunei"));
-	}
 
 	loadTargets(){
-		//this.loadCustom();
-		//return;
 		this.loadNorthAmerica();
 		this.loadSouthAmerica();
 		this.loadAfrica();
@@ -476,7 +496,7 @@ class GameState {
 
 	getLevels(levelCount){
 		const levelArray = [
-			new Level(1, 350, 1211111112312312312),
+			new Level(1, 350, 12),
 			new Level(2, 550, 11),
 			new Level(3, 750, 10),
 			new Level(4, 1000, 10),
@@ -1162,7 +1182,7 @@ class Globetrotter {
 	ResetZoom(){
 		this.zoomScale = 1;
 		this.zoomDepth = 0;
-		this.maxZoomDepth = 30;
+		this.maxZoomDepth = 35;
 		this.clipX = 0;
 		this.clipY = 0;
 		this.clipW = this.canvasMap.width;
