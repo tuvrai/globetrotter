@@ -361,19 +361,25 @@ class GameState {
 		this.targets.push(new Target(2,45.5,"Mogadishu","Somalia"));
 		this.targets.push(new Target(-19,47.5,"Antananarivo","Madagascar","Analamanga"));
 		this.targets.push(new Target(-34,18.5,"Cape Town","South Africa","Western Cape"));
+		this.targets.push(new Target(-25.75,28.25,"Pretoria","South Africa","Western Cape"));
+		this.targets.push(new Target(-26.25,28,"Johannesburg","South Africa","Gauteng"));
 		this.targets.push(new Target(33.5,-7.5,"Casablanca","Morocco","Casablanca-Settat"));
 		this.targets.push(new Target(37,10.25,"Tunis","Tunisia"));
 		this.targets.push(new Target(5,31.5,"Juba","South Sudan"));
 		this.targets.push(new Target(12,15,"N'Djamena","Chad"));
+		this.targets.push(new Target(-6.25, 35.75,"Dodoma","Tanzania"));
 		this.targets.push(new Target(-7,39.25,"Dar es Salaam","Tanzania"));
 		this.targets.push(new Target(-20,57.5,"Port Louis","Mauritius"));
 		this.targets.push(new Target(-21,55.5,"Saint-Denis","Reunion"));
 		this.targets.push(new Target(-14,33.75,"Lilongwe","Malawi","Central"));
 		this.targets.push(new Target(4,11.5,"Yaoundé","Cameroon","Central"));
 		this.targets.push(new Target(30,31,"Gisa","Egypt"));
+		this.targets.push(new Target(30,31.25,"Cairo","Egypt"));
+		this.targets.push(new Target(24,33,"Asuan","Egypt"));
 		this.targets.push(new Target(-4.25,15.25,"Brazzaville","Congo"));
 
 		this.targets.push(new Target(36.75,3,"Algiers","Algeria"));
+		this.targets.push(new Target(22.75,5.5,"Tamanrasset","Algeria"));
 		this.targets.push(new Target(33,13.25,"Tripoli","Libya","Tripolitania"));
 		this.targets.push(new Target(12.75,-8,"Bamako","Mali"));
 		this.targets.push(new Target(4.25,18.75,"Bangi","Central African Republic")); //+0.25 E
@@ -579,7 +585,8 @@ class GameState {
 		for (let i = 0 ; i < levelCount; i++)
 		{
 			const targetCount = i+2;
-			levelArray[i].WithPoints(this.grabTargets(currentId, targetCount));
+			levelArray[i].WithPoints(this.targets);
+			//levelArray[i].WithPoints(this.grabTargets(currentId, targetCount));
 			currentId = currentId + targetCount + 1;
 		}
 		return levelArray.slice(0, levelCount);
@@ -1118,7 +1125,6 @@ class Globetrotter {
 
 	drawLastAttempt() {
 		this.clearTargetCtx();
-		this.drawAllTargets();
 		if (!this.isGuessing)
 		{
 			this.drawTarget(this.clickedPoint.x, this.clickedPoint.y, 5, 'red');
