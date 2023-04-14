@@ -277,6 +277,7 @@ class GameState {
 		this.targets.push(new Target(38, 23.75,"Athens","Greece", "Attica"));
 		this.targets.push(new Target(40, 22.25,"Mount Olympus","Greece", "Thessaly/Macedonia border"));
 		this.targets.push(new Target(42, 12.5,"Rome","Italy", "Latium"));
+		this.targets.push(new Target(42, 12.5,"Vatican City","Vatican", "Latium"));
 		this.targets.push(new Target(60.25, 25,"Helsinki","Finland", "Uusimaa"));
 		this.targets.push(new Target(66.5, 25.75,"Rovaniemi","Finland", "Lapland"));
 		this.targets.push(new Target(59.5, 18,"Stockholm","Sweden"));
@@ -344,7 +345,7 @@ class GameState {
 		this.targets.push(new Target(38.25,13.5,"Palermo","Italy","Sicily"));
 		this.targets.push(new Target(45,7.75,"Turin","Italy","Piedmont"));
 		this.targets.push(new Target(45.5,9.25,"Milan","Italy","Lombardy"));
-		this.targets.push(new Target(2,1,"aaa","Italy"));
+		this.targets.push(new Target(41,17,"Bari","Italy"));
 		this.targets.push(new Target(42,8.75,"Ajaccio","France","Corsica"));
 		this.targets.push(new Target(45.75,4.75,"Lyon","France","Auvergne-Rhône-Alpes"));
 		this.targets.push(new Target(47.25,-1.5,"Nantes","France","Pays de la Loire"));
@@ -1124,6 +1125,7 @@ class Globetrotter {
 
 	drawLastAttempt() {
 		this.clearTargetCtx();
+		this.drawAllTargets();
 		if (!this.isGuessing)
 		{
 			this.drawTarget(this.clickedPoint.x, this.clickedPoint.y, 5, 'red');
