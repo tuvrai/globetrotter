@@ -1125,7 +1125,6 @@ class Globetrotter {
 
 	drawLastAttempt() {
 		this.clearTargetCtx();
-		this.drawAllTargets();
 		if (!this.isGuessing)
 		{
 			this.drawTarget(this.clickedPoint.x, this.clickedPoint.y, 5, 'red');
