@@ -32,7 +32,7 @@ Moves to next location, after a guess (does the same as _next_ button)
 
 ## Scoring
 You get 0-100 distance points. 100 is awarded for distance 0 km. Then every half degree (around 55.5 km) you drop one point. So 0 - 55.5 km score is 99, 55.5 - 111.1 is 98 and so on.
-There is also a multiplier of 5, if the distance is smaller than half degree (at least 99 points) or multiplier of 3, if the distance is smaller than 2 degree (222.2 km). Otherwise, there's no multiplier.
+There is also a multiplier of 5, if the distance is smaller than half degree (at least 99 points) or multiplier of 3, if the distance is smaller than 2.5 degree (277.75 km). Otherwise, there's no multiplier.
 
 You can also get 0-50 time points. The formula is `Math.floor(50 * (remainingTime / targetTime) * (distanceScore / 100))`
 For example, when every target in level is 10 seconds, you hit it with 99 distance points in 2 seconds you get 39 points.
