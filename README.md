@@ -30,6 +30,19 @@ Resests the zoom to starting depth.<br>
 ### Enter ###
 Moves to next location, after a guess (does the same as _next_ button)
 
+## Scoring
+You get 0-100 distance points. 100 is awarded for distance 0 km. Then every half degree (around 55.5 km) you drop one point. So 0 - 55.5 km distance is 99, 55.5 - 111.1 is 98 and so on.
+There is also a multiplier of 5, if the distance is smaller than half degree (at least 99 points) or multiplier of 3, if the distance is smaller than 2 degree (222.2 km). Otherwise, there's no multiplier.
+
+You can also get 0-50 time points. The formula is `Math.floor(50 * (remainingTime / targetTime) * (distanceScore / 100))`
+For example, when every target in level is 10 seconds, you hit it with 99 distance points in 2 seconds you get 39 points.
+
+So being precise is more important than being quick.
+
+With 75 targets in standard game, maximum point value is 41250, but this is impossible for humans.
+40000 might be possible, but it's very hard.
+So far the best I did was like 31500, but I made the game. Still, plenty of room to improve.
+
 ## Custom locations
 Feel free to add your own locations. Just add new target in the `loadTargets` function, with particular data - name, country, region, latitude and longitude values of the location.
 
