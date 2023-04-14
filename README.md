@@ -18,6 +18,7 @@ Every level has a threshold of points we need to get in the level. If we don't g
 
 ## Instructions
 To play the game, just clone or download this repository and open _main.html_ file in browser.
+Soon it will be available in the internet also.
 
 ### Scroll wheel ###
 Allows zooming in / out the map
