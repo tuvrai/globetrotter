@@ -14,14 +14,15 @@ Game has 10 levels, each with some random locations (starting from 3 at the firs
 We have a map in Robinson projection (the old flash game uses Mercator projection, which actually might be a better choice, as the land mass is bigger on it, but for some reason I dived into Robinson one, which is totally ok also). It has outlined states of the world. From the level 7 though, the borders dissapear and we end up with a plain map of the world.
 The source of the map is [here](http://alabamamaps.ua.edu/contemporarymaps/world/world/index.html).
 
-Every level has a threshold of points we need to get in the level. If we fail, we lose. If we win, we go to the next level, eventually winning the game after completing all locations in 10th level and getting enough points.
+Every level has a threshold of points we need to get in the level. If we don't get enought points, we lose. If we win, we go to the next level, eventually winning the game after completing all locations in 10th level and getting enough points.
 
 ## Instructions
 ### Scroll wheel ###
 Allows zooming in / out the map
 
 ### R ###
-Resests the zoom
+Resests the zoom to starting depth.<br>
+*Note*: zoom resets everytime on it's own after clicking _next_ button.
 
 ### Enter ###
 Moves to next location, after a guess (does the same as _next_ button)
@@ -35,3 +36,10 @@ If you have coordinates in degree / minutes notation, you can still convert it t
 
 The southern hemisphere latitude is written with negative, for example 25.5 south is simply -25.5. Same goes with western hempisphere longitude. North hemisphere latitude and eastern hemisphere longitude is positive.
 The hemisphere of the point is determined by whether it is above or down to equator and whether it is left or right to prime meridian.
+
+## TODO
+* Mobile version support
+* Allow choosing locations (like only capitals from North America or only places from Oceania etc.)
+* Show some trivia about guessed location
+* Allow loading custom locations (from GUI or JSON string)
+* Maybe music, just like the flash version had
