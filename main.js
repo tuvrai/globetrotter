@@ -785,7 +785,7 @@ class GameView {
 	OnTimeTick(e) {
 		this.timeProgressBar.max = Math.round(e.detail.fullTime * 100) / 100;
 		this.timeProgressBar.value = Math.round(e.detail.remainingTime * 100) / 100;
-		this.timeRemainingLbl.innerText = Math.abs(e.detail.remainingTime).toFixed(2);
+		this.timeRemainingLbl.innerText = Math.max(e.detail.remainingTime,0).toFixed(2);
 	}
 
 	ShowLevelMenu(levelId)
