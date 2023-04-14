@@ -277,7 +277,7 @@ class GameState {
 		this.targets.push(new Target(38, 23.75,"Athens","Greece", "Attica"));
 		this.targets.push(new Target(40, 22.25,"Mount Olympus","Greece", "Thessaly/Macedonia border"));
 		this.targets.push(new Target(42, 12.5,"Rome","Italy", "Latium"));
-		this.targets.push(new Target(42, 12.5,"Vatican City","Vatican", "Latium"));
+		this.targets.push(new Target(42, 12.5,"Vatican City","Holy See"));
 		this.targets.push(new Target(60.25, 25,"Helsinki","Finland", "Uusimaa"));
 		this.targets.push(new Target(66.5, 25.75,"Rovaniemi","Finland", "Lapland"));
 		this.targets.push(new Target(59.5, 18,"Stockholm","Sweden"));
