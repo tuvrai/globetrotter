@@ -264,8 +264,10 @@ class GameState {
 
 	loadEurope()
 	{
-		this.targets.push(new Target(50.25,19,"Katowice","Poland","Śląskie"));
-		this.targets.push(new Target(52.25,21,"Warsaw","Poland","Mazowieckie"));
+		this.targets.push(new Target(50.25,19,"Katowice","Poland","Silesian"));
+		this.targets.push(new Target(54.5,18.5,"Gdańsk","Poland","Pomeranian"));
+		this.targets.push(new Target(52.25,21,"Warsaw","Poland","Masovian"));
+		this.targets.push(new Target(53.5,14.5,"Szczecin","Poland","West Pomeranian"));
 		this.targets.push(new Target(48,17,"Bratislava","Slovakia"));
 		this.targets.push(new Target(48.25,16.5,"Vienna","Austria"));
 		this.targets.push(new Target(50,14.5,"Prague","Czechia"));
@@ -273,23 +275,39 @@ class GameState {
 		this.targets.push(new Target(41.25,19.75,"Tirane","Albania"));
 		this.targets.push(new Target(44.75, 20.5,"Belgrade","Serbia"));
 		this.targets.push(new Target(38, 23.75,"Athens","Greece", "Attica"));
+		this.targets.push(new Target(40, 22.25,"Mount Olympus","Greece", "Thessaly/Macedonia border"));
 		this.targets.push(new Target(42, 12.5,"Rome","Italy", "Latium"));
 		this.targets.push(new Target(60.25, 25,"Helsinki","Finland", "Uusimaa"));
+		this.targets.push(new Target(66.5, 25.75,"Rovaniemi","Finland", "Lapland"));
 		this.targets.push(new Target(59.5, 18,"Stockholm","Sweden"));
+		this.targets.push(new Target(57.75, 12,"Gothenburg","Sweden"));
 		this.targets.push(new Target(60,10.75,"Oslo","Norway", "Eastern Norway"));
+		this.targets.push(new Target(67.25,14.5,"Bodø","Norway", "Nordland"));
 		this.targets.push(new Target(49, 2.5,"Paris","France"));
 		this.targets.push(new Target(48.25, 11.5,"Munich","Germany","Bavaria"));
 		this.targets.push(new Target(51.5,-2.5,"Bristol","United Kingdom"));
+		this.targets.push(new Target(53.5,-3,"Liverpool","United Kingdom","Merseyside"));
+		this.targets.push(new Target(53.5,-2.25,"Manchester","United Kingdom"));
+		this.targets.push(new Target(55,-1.5,"Newcastle upon Tyne","United Kingdom","Tyne and Wear"));
 		this.targets.push(new Target(64.25,-22,"Reykjavík","Iceland","Höfuðborgarsvæðið"));
 		this.targets.push(new Target(47.25, 8.5,"Zürich","Switzerland"));
 		this.targets.push(new Target(54.75, 56,"Ufa","Russia","Bashkortostan"));
 		this.targets.push(new Target(55.75, 37.5,"Moscow","Russia"));
+		this.targets.push(new Target(60, 30.25,"Saint Petersburg","Russia"));
+		this.targets.push(new Target(55, 83,"Novosibirsk","Russia"));
+		this.targets.push(new Target(57, 60.5,"Yekaterinburg","Russia","Sverdlovsk"));
+		this.targets.push(new Target(43, 132,"Vladivostok","Russia","Primorsky"));
+		this.targets.push(new Target(62, 129.75,"Yakutsk","Russia","Sakha Rep."));
+
 		this.targets.push(new Target(40.5, -3.5,"Madrid","Spain"));
 		this.targets.push(new Target(78.25, 15.5, "Longyearbyen", "Norway","Svalbard"))
 
 		this.targets.push(new Target(52.5,5,"Amsterdam","The Netherlands","North Holland"));
+		this.targets.push(new Target(52,4.25,"The Hague","The Netherlands","South Holland"));
 		this.targets.push(new Target(42.5,1.5,"Andorra la Vella","Andorra"));
 		this.targets.push(new Target(52.5,13.5,"Berlin","Germany"));
+		this.targets.push(new Target(53.5,10,"Hamburg","Germany"));
+		this.targets.push(new Target(50,8.75,"Frankfurt am Main","Germany","Hesse"));
 		this.targets.push(new Target(47,7.5,"Bern","Switzerland"));
 		this.targets.push(new Target(51,4.25,"Brussels","Belgium"));
 		this.targets.push(new Target(44.5,26,"Bucharest","Romania"));
@@ -297,8 +315,10 @@ class GameState {
 		this.targets.push(new Target(47,29,"Chișinău","Moldova"));
 		this.targets.push(new Target(55.75,12.5,"Copenhagen","Denmark"));
 		this.targets.push(new Target(53.25,-6.25,"Dublin","Ireland","Leinster"));
+		this.targets.push(new Target(52,-8.5,"Cork","Ireland","Munster"));
 		this.targets.push(new Target(50.5,30.5,"Kyiv","Ukraine"));
 		this.targets.push(new Target(38.75,-9.25,"Lisbon","Portugal"));
+		this.targets.push(new Target(41.25,-8.5,"Porto","Portugal","Norte"));
 		this.targets.push(new Target(46.25,14.5,"Ljubljana","Slovenia")); //+0.25 N
 		this.targets.push(new Target(51.5,0,"City of London","United Kingdom","Greater London"));
 		this.targets.push(new Target(49.75,6,"Luxembourg City","Luxembourg")); //+0.25 N
@@ -320,6 +340,19 @@ class GameState {
 		this.targets.push(new Target(56,-3.25,"Edinburgh","United Kingdom","Scotland"));
 		this.targets.push(new Target(54.5,-5.75,"Belfast","United Kingdom","Northern Ireland")); //-0.25 W
 		this.targets.push(new Target(51.5,-3,"Cardiff","United Kingdom","Wales"));
+
+		this.targets.push(new Target(38.25,13.5,"Palermo","Italy","Sicily"));
+		this.targets.push(new Target(45,7.75,"Turin","Italy","Piedmont"));
+		this.targets.push(new Target(45.5,9.25,"Milan","Italy","Lombardy"));
+		this.targets.push(new Target(2,1,"aaa","Italy"));
+		this.targets.push(new Target(42,8.75,"Ajaccio","France","Corsica"));
+		this.targets.push(new Target(45.75,4.75,"Lyon","France","Auvergne-Rhône-Alpes"));
+		this.targets.push(new Target(47.25,-1.5,"Nantes","France","Pays de la Loire"));
+		this.targets.push(new Target(43.25,5.25,"Marseille","France","Alpes-Côte d'Azur"));
+		this.targets.push(new Target(41.5,2.25,"Barcelona","Spain","Catalonia"));
+		this.targets.push(new Target(37.5,-6,"Seville","Spain","Andalusia"));
+		this.targets.push(new Target(43.25,-3,"Bilbao","Spain","Basque Country"));
+		this.targets.push(new Target(39.5,-0.25,"Valencia","Spain","Basque Country"));
 	}
 
 	loadAfrica()
@@ -387,10 +420,10 @@ class GameState {
 		this.targets.push(new Target(-22.5,17,"Windhoek","Namibia","Khomas"));
 		this.targets.push(new Target(6.75,-5.25,"Yamoussoukro","Côte d'Ivoire"));
 	}
-	//this.targets.push(new Target(2,1,"aaa","bbb"));
 	loadAsia()
 	{
 		this.targets.push(new Target(51, 71.5,"Astana","Kazakhstan"));
+		this.targets.push(new Target(50.25, 57.25,"Aktobe","Kazakhstan"));
 		this.targets.push(new Target(43, 74.5,"Bishkek","Kyrgyzstan"));
 		this.targets.push(new Target(38.5, 68.75,"Dushanbe","Tajikistan"));
 		this.targets.push(new Target(41.25, 69.25,"Tashkent","Uzbekistan"));
@@ -401,24 +434,43 @@ class GameState {
 		this.targets.push(new Target(33.5, 44.5,"Baghdad","Iraq"));
 		this.targets.push(new Target(38, 58.5,"Ashgabat","Turkmenistan"));
 		this.targets.push(new Target(35.75, 51.5,"Tehran","Iran"));
+		this.targets.push(new Target(29.5, 52.5,"Shiraz","Iran","Fars"));
 		this.targets.push(new Target(34.5, 69,"Kabul","Afghanistan"));
 		this.targets.push(new Target(25, 67,"Karachi","Pakistan","Sindh"));
 		this.targets.push(new Target(23.5, 58.5,"Muscat","Oman"));
 		this.targets.push(new Target(28.5, 77,"New Delhi","India","Delhi"));
 		this.targets.push(new Target(24.5, 85,"Bodh Gaya","India","Bihar"));
 		this.targets.push(new Target(19, 73,"Mumbai","India","Maharashtra"));
+		this.targets.push(new Target(17.5, 78.5,"Hyderabad","India","Telangana"));
+		this.targets.push(new Target(22.5, 88.25,"Kolkata","India","West Bengal"));
+		this.targets.push(new Target(13, 77.5,"Bangalore","India","Karnataka"));
+
 		this.targets.push(new Target(27.5, 89.75,"Thimphu","Bhutan"));
 		this.targets.push(new Target(16.75, 96,"Yangon","Myanmar"));
 		this.targets.push(new Target(48, 107,"Ulaanbaatar","Mongolia"));
 		this.targets.push(new Target(29.5, 106.5,"Chongqing","China","Yuzhong"));
 		this.targets.push(new Target(31, 121.5,"Shanghai","China"));
 		this.targets.push(new Target(40, 116.5,"Beijing","China"));
+		this.targets.push(new Target(36, 103.75,"Lanzhou","China","Gansu"));
+		this.targets.push(new Target(43.75, 87.5,"Ürümqi","China","Xinjiang Uygur AR / East Turkestan"));
+		this.targets.push(new Target(22.25, 114.25,"Hong Kong", "China","SAR"));
+		this.targets.push(new Target(22.25, 113.5,"Macau","China","SAR"));
+		this.targets.push(new Target(29.5, 91,"Lhasa","China","Tibet AR"));
+
 		this.targets.push(new Target(1.25, 104,"Singapore","Singapore"));
 		this.targets.push(new Target(-6.25, 107,"Jakarta","Indonesia"));
+		this.targets.push(new Target(-5.25, 119.5,"Makassar","Indonesia","Sulawesi"));
+		this.targets.push(new Target(-0.5, 117.25,"Samarinda","Indonesia","East Kalimantan"));
+		this.targets.push(new Target(3.5, 98.75,"Medan","Indonesia","North Sumatra"));
+		this.targets.push(new Target(-2.5, 140.75,"Jayapura","Indonesia","Papua"));
 		this.targets.push(new Target(35.5, 140,"Tokyo","Japan"));
+		this.targets.push(new Target(43, 141.25,"Sapporo","Japan","Hokkaido"));
+		this.targets.push(new Target(33.5, 130.5,"Fukuoka","Japan","Kyushu"));
+		this.targets.push(new Target(34.75, 135.75,"Osaka","Japan","Kansai"));
 
 		this.targets.push(new Target(39,125.75,"Pyongyang","North Korea"));
 		this.targets.push(new Target(37.5,127,"Seoul","South Korea"));
+		this.targets.push(new Target(35.25,129,"Busan","South Korea","Yeongnam"));
 		this.targets.push(new Target(25,121.5,"Taipei","Republic of China","Taiwan"));
 		this.targets.push(new Target(23.75,90.25,"Dhaka","Bangladesh"));
 		this.targets.push(new Target(33.75,73,"Islamabad","Pakistan"));
@@ -432,6 +484,7 @@ class GameState {
 		this.targets.push(new Target(21,105.75,"Hanoi","Vietnam","Red River Delta"));
 		this.targets.push(new Target(3.25,101.75,"Kuala Lumpur","Malaysia"));
 		this.targets.push(new Target(14.5,121,"Manila","Philippines"));
+		this.targets.push(new Target(7,125.5,"Davao","Philippines"));
 		this.targets.push(new Target(19.75,96,"Naypyidaw","Myanmar"));
 		this.targets.push(new Target(11.5,105,"Phnom Penh","Cambodia"));
 		this.targets.push(new Target(18,102.5,"Vientiane","Laos"));
@@ -439,10 +492,11 @@ class GameState {
 		this.targets.push(new Target(24.5,54.25,"Abu Dhabi","United Arab Emirates"));
 		this.targets.push(new Target(32,36,"Amman","Jordan"));
 		this.targets.push(new Target(40,33,"Ankara","Turkey","Central Anatolia"));
+		this.targets.push(new Target(40,41.25,"Erzurum","Turkey"));
 		this.targets.push(new Target(34,35.5,"Beirut","Lebanon"));
 		this.targets.push(new Target(33.5,36.25,"Damascus","Syria"));
 		this.targets.push(new Target(25.25,51.5,"Doha","Qatar"));
-		this.targets.push(new Target(31.75,35.25,"Jerusalem"));
+		this.targets.push(new Target(31.75,35.25,"Jerusalem",""));
 		this.targets.push(new Target(32,34.75,"Tel Aviv","Israel"));
 		this.targets.push(new Target(32,35.5,"Jericho","Palestine"));
 		this.targets.push(new Target(29.25,48,"Kuwait City","Kuwait"));
@@ -454,13 +508,24 @@ class GameState {
 
 	loadOceania()
 	{
-		this.targets.push(new Target(-18.25, 178.5,"Suva","Fiji","Central"));
-		this.targets.push(new Target(-37, 175,"Auckland","New Zealand"));
-		this.targets.push(new Target(-32, 116.25,"Perth","Australia","Western Australia"));
-		this.targets.push(new Target(-34, 151.25,"Sydney","Australia","New South Wales"));
-		this.targets.push(new Target(21.25, -157.75,"Honolulu","USA","Hawaii"));
-		this.targets.push(new Target(-9.5, 147.25, "Port Moresby", "Papua New Guinea"));
+		this.targets.push(new Target(-37, 174.75,"Auckland","New Zealand"));
+		this.targets.push(new Target(-43.5, 172.75,"Christchurch","New Zealand","Canterbury"));
+		this.targets.push(new Target(-41.25, 174.75,"Wellington","New Zealand"));
 
+		this.targets.push(new Target(-32, 116.25,"Perth","Australia","Western Australia"));
+		this.targets.push(new Target(-18, 122.25,"Broome","Australia","Western Australia"));
+		this.targets.push(new Target(-34, 151.25,"Sydney","Australia","New South Wales"));
+		this.targets.push(new Target(-35.25, 149,"Canberra","Australia","Capital Territory"));
+		this.targets.push(new Target(-23.75, 134,"Alice Springs","Australia","Northern Territory"));
+		this.targets.push(new Target(-37.75, 145,"Melbourne","Australia","Victoria"));
+		this.targets.push(new Target(-19.25, 146.75,"Tonwsville","Australia","Queensland"));
+		this.targets.push(new Target(-43, 147.25,"Hobart","Australia","Tasmania"));
+		this.targets.push(new Target(-27.5, 153,"Brisbane","Australia","Queensland"));
+		this.targets.push(new Target(-35, 138.5,"Adelaide","Australia","South Australia"));
+		this.targets.push(new Target(-43, 147.25,"Hobart","Australia","Tasmania"));
+
+		this.targets.push(new Target(-9.5, 147.25, "Port Moresby", "Papua New Guinea"));
+		this.targets.push(new Target(-18.25, 178.5,"Suva","Fiji","Central"));
 		this.targets.push(new Target(1.25,173,"South Tarawa","Kiribati"));
 		this.targets.push(new Target(-9.5,160,"Honiara","Solomon Islands"));
 		this.targets.push(new Target(-21.25,-175.25,"Nuku'alofa","Tonga","Tongatapu"));
@@ -471,6 +536,9 @@ class GameState {
 		this.targets.push(new Target(7.5,134.75,"Ngerulmud","Palau","Melekeok"));
 		this.targets.push(new Target(-13.75,-171.75,"Apia","Samoa","Tuamasaga"));
 		this.targets.push(new Target(7,158.25,"Palikir","Micronesia","Pohnpei"));
+
+		this.targets.push(new Target(21.25, -157.75,"Honolulu","USA","Hawaii"));
+		this.targets.push(new Target(-22.25, 166.5,"Nouméa","New Caledonia"));
 	}
 
 
