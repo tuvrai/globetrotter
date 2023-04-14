@@ -17,6 +17,8 @@ The source of the map is [here](http://alabamamaps.ua.edu/contemporarymaps/world
 Every level has a threshold of points we need to get in the level. If we don't get enought points, we lose. If we win, we go to the next level, eventually winning the game after completing all locations in 10th level and getting enough points.
 
 ## Instructions
+To play the game, just clone or download this repository and open _main.html_ file in browser.
+
 ### Scroll wheel ###
 Allows zooming in / out the map
 
