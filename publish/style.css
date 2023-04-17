@@ -1,0 +1,162 @@
+#globetrotter{
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.game-screen{
+	display: none;
+}
+
+.content-image{
+	display: none;
+}
+
+.content-image-worldmap{
+	display: none;
+	width: 1000px;
+	height: 800px;
+}
+
+.layer {
+	position: absolute;
+	cursor: crosshair;
+	line-height: 5px;
+	text-align: center;
+}
+
+.layer a {
+	text-decoration: none;
+	color: navy;
+}
+
+.game-secondarybar{
+	position: absolute;
+	display: none;
+}
+
+#main-menu{
+	background-color: wheat	;
+	position: absolute;
+	display: block;
+	margin: auto;
+}
+
+.game-mainbar{
+	display: hidden;
+}
+
+
+.game-state{
+	display: none;
+	grid-template-columns: 1fr 5fr 1fr;
+}
+
+.game-state-overall{
+	display: grid;
+	grid-template-columns: 3fr 5fr;
+	grid-template-rows: 1fr 1fr;
+	justify-items: left;
+}
+
+
+.game-state-current-target{
+	text-align: center;
+	font-weight: bold;
+}
+
+.game-state-current-level{
+	display: grid;
+	grid-template-columns: 3fr 5fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	justify-items: left;
+}
+
+.game-state-current-target-name{
+	font-size: 2em;
+}
+
+.globetrotter-game-title{
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	font-size: 3em;
+	font-weight: bold;
+	text-align: center;
+}
+
+#menu-options{
+	display: grid;
+	padding: 5% 30%;
+	grid-template-columns: 1fr;
+	align-items: center;
+}
+
+#menu-options > button{
+	cursor: pointer;
+	height: 3em;
+	font-size: 2em;
+}
+
+#menu-next-level{
+	text-align: center;
+	color: dimgray;
+}
+
+#menu-final-score {
+	display: none;
+	text-align: center;
+}
+
+.target-result-context-menu{
+	text-align: center;
+	background-color: wheat;
+	border: 2px solid black;
+	border-radius: 8%;
+	width: 200px;
+	height: 250px;
+	z-index: 100;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	bottom: 0;
+	right: 0;
+	display: none;
+}
+
+.context-menu-next-target-btn{
+	cursor: pointer;
+	width: 60%;
+	padding: 5%;
+	margin: auto;
+	border: 1px solid black;
+}
+
+.context-menu-distance-score-multiplier{
+	font-weight: bold;
+	color: red;
+	vertical-align: super;
+}
+
+.context-menu-target-score{
+	font-weight: bold;
+	color: green;
+}
+
+.target-stats{
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
+}
+
+.target-stats div{
+	text-align: center;
+}
+
+.game-state-after-target-stats{
+	display: grid;
+	grid-template-columns: 3fr 5fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	justify-items: left;
+}
+
+#time-countdown-progress-bar{
+	width: 60%;
+}

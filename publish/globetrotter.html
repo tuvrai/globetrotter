@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Globetrotter HTML5</title>
+</head>
+<body>
+	<div id = "globetrotter">
+		<div class = "globetrotter-component game-mainbar">
+			<div class="game-state">
+				<div class="game-state-overall">
+					<div class="game-current-level-lbl">Level:&nbsp;</div><div class="game-current-level">1</div>
+					<div class="game-current-score-lbl">Score:&nbsp;</div><div class="game-current-score">0</div>
+				</div>
+				<div class="game-state-current-target">
+					<div class="game-state-current-target-name">Tychy, Slaskie, Poland</div>
+					<div id="game-state-time-countdown">
+						<progress id="time-countdown-progress-bar" value="5" max="100"></progress>
+						<span><span id="game-state-time-countdown-remaining-value">0</span>&nbsp;sec</span>
+					</div>
+				</div>
+				<div class="game-state-current-level">
+					<div class="game-current-level-target-count-lbl">Target:&nbsp;</div><div><span class="game-current-level-target-id">5</span>&#47;<span class="game-current-level-target-count">8</span></div>
+					<div class="game-current-level-score-lbl">Yours:&nbsp;</div><div class="game-current-level-score">152</div>
+					<div class="game-current-level-score-required-lbl">Required:&nbsp;</div><div class="game-current-level-score-required">555</div>
+				</div>
+			</div>
+			<div class = "globetrotter-component globetrotter-game-title">
+				<div>Globetrotter</div>
+			</div>
+		</div>
+		<div class="globetrotter-component game-screen">
+			<div class="menu" id="main-menu" style="z-index: 20;">
+				<h1 id="menu-next-level">Level 1</h1>
+				<h2 id="menu-final-score"></h2>
+				<div id="menu-options">
+					<button id = "start-game-btn" type="button">
+						Start
+					</button>
+				</div>
+			</div>
+			<div class="layer" style="z-index:10">
+				<canvas id ="layer-target"></canvas>
+				<p>By <a href="https://github.com/tuvrai/">tuvrai</a>. You can help improve this project by <a href="https://github.com/tuvrai/globetrotter" target="_blank">contributing to it.</a></p>
+				<p>Map produced by&nbsp;<a href="http://alabamamaps.ua.edu/contemporarymaps/world/world/index.html" target="_blank">the Cartographic Research Lab, University of Alabama</a></p>
+				<p></p>
+			</div>
+			<div class="layer" style="z-index:2">
+				<canvas class="layer" id ="layer-map"></canvas>
+			</div>
+			<div class="target-result-context-menu">
+				<h2><span class="context-menu-distance-error"></span>&nbsp;	km</h2>
+				<p>Distance score:&nbsp;<span class="context-menu-distance-score"></span>&nbsp;<span class="context-menu-distance-score-multiplier">x<span class="context-menu-distance-score-multiplier-value">5</span></span></p>
+				<p>Time bonus:&nbsp;<span class="context-menu-time-bonus-score"></span></p>
+				<p>Total:&nbsp;<span class="context-menu-target-score"></span></p>
+				<button type="button" class="context-menu-next-target-btn">Next</button>
+			</div>
+		</div>
+	</div>
+</body>
+<img  class="content-image content-image-worldmap" />
+<img  class="content-image content-image-worldmap-noborders" />
+<script type="text/javascript" src="main.js"></script>
+</html>
