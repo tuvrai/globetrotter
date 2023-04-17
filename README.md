@@ -1,6 +1,8 @@
 # globetrotter
 Game playable in browser, where you need to indicate on the world map the location of given place. It is based on the classic flash game and in honor for it is now playable in HTML5 canvas.
 
+You can play [here](http://tuvrai.space/globetrotter/)
+
 ## Origins
 It is based on a flash game _Globetrotter XL_. [Here's the gameplay](https://www.youtube.com/watch?v=zd8Ka2Hzst0) (With quite good score BTW). Unfortunately, now this game is not as easy to play and it needed some refreshment anyway. 
 
@@ -17,8 +19,7 @@ The source of the map is [here](http://alabamamaps.ua.edu/contemporarymaps/world
 Every level has a threshold of points we need to get in the level. If we don't get enought points, we lose. If we win, we go to the next level, eventually winning the game after completing all locations in 10th level and getting enough points.
 
 ## Instructions
-To play the game, just clone or download this repository and open _main.html_ file in browser.
-Soon it will be available in the internet also.
+To play locally, so you don't need access to the internet, just clone or download this repository and open _main.html_ file in browser.
 
 ### Scroll wheel ###
 Allows zooming in / out the map
