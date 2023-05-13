@@ -40,6 +40,14 @@
 	margin: auto;
 }
 
+#settings-menu{
+	background-color: rgb(235, 196, 123)	;
+	position: absolute;
+	display: grid;
+	align-items: center;
+	margin: auto;
+}
+
 .game-mainbar{
 	display: hidden;
 }
@@ -94,6 +102,13 @@
 	cursor: pointer;
 	height: 3em;
 	font-size: 2em;
+}
+
+#settings-menu > button{
+	cursor: pointer;
+	height: 1.5em;
+	font-size: 1.5em;
+	margin: auto;
 }
 
 #menu-next-level{
@@ -159,4 +174,38 @@
 
 #time-countdown-progress-bar{
 	width: 60%;
+}
+
+#settings-btn {
+	margin-top: 30px;
+}
+
+#settings-form {
+	text-align: center;
+	font-size: 1.1em;
+}
+
+#settings-form input[type=checkbox] {
+	height: 20px;
+	width: 20px;
+	margin-top: 3px;
+}
+
+#settings-form span {
+	vertical-align: top;
+}
+
+#settings-form textarea {
+	height: 214px;
+	width: 200px;
+}
+
+#settings-form p {
+	font-size: 0.7em;
+	margin: 0;
+	padding: 0;
+}
+
+#settings-exit-btn {
+	display: block;
 }

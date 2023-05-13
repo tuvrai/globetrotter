@@ -12,15 +12,29 @@ function getRandomRgb(){
 	return `rgb(${getRandomInRange(0,255)}, ${getRandomInRange(0,255)}, ${getRandomInRange(0,255)})`;
 }
 
+class Settings {
+	constructor()
+	{
+		this.IsCapitalsOnly = document.getElementById('IsCapitalsOnly').checked;
+		this.IsEuropeEnabled = document.getElementById('IsEuropeEnabled').checked;
+		this.IsAsiaEnabled = document.getElementById('IsAsiaEnabled').checked;
+		this.IsAfricaEnabled = document.getElementById('IsAfricaEnabled').checked;
+		this.IsNorthAmericaEnabled = document.getElementById('IsNorthAmericaEnabled').checked;
+		this.IsSouthAmericaEnabled = document.getElementById('IsSouthAmericaEnabled').checked;
+		this.IsAustraliaOceaniaEnabled = document.getElementById('IsAustraliaOceaniaEnabled').checked;
+		this.IsCustomEnabled = document.getElementById('IsCustomEnabled').checked;
+		this.CustomLocationsJson = document.getElementById('CustomLocationsJson').value.toString();
+	}
+}
+
 class Target{
-	constructor(lat,lng,name,country, region = "", minLevel = 1){
+	constructor(lat,lng,name,country, region = "", isCapital = false){
 		this.lat = lat;
 		this.lng = lng;
 		this.name = name;
 		this.country = country;
 		this.region = region;
-		this.minLevel = minLevel;
-		this.used = false;
+		this.isCapital = isCapital;
 	}
 
 	GetLabel() {
@@ -163,399 +177,63 @@ class GameState {
 	constructor(levelCount = 10){
 		this.currentLevelId = 0;
 		this.points = 0;
+		this.levelCount = levelCount;
+		this.ReloadLevels();
+		this.interval = undefined;
+		this.capitalCityFlag = true;
+	}
+
+	ReloadLevels()
+	{
 		this.targets = [];
 		this.loadTargets();
 		this.shuffleTargets();
-		this.levels = this.getLevels(levelCount);
-		this.interval = undefined;
+		this.levels = this.getLevels(this.levelCount);
+	}
+	
+	loadStandardLocations(currentSettings){
+		const locationsFunctionsMap = [
+			{isEnabled: currentSettings.IsEuropeEnabled, getter: StandardLocations.LoadEurope},
+			{isEnabled: currentSettings.IsAfricaEnabled, getter: StandardLocations.LoadAfrica},
+			{isEnabled: currentSettings.IsAsiaEnabled, getter: StandardLocations.LoadAsia},
+			{isEnabled: currentSettings.IsNorthAmericaEnabled, getter: StandardLocations.LoadNorthAmerica},
+			{isEnabled: currentSettings.IsSouthAmericaEnabled, getter: StandardLocations.LoadSouthAmerica},
+			{isEnabled: currentSettings.IsAustraliaOceaniaEnabled, getter: StandardLocations.LoadOceania},
+		];
+		locationsFunctionsMap.filter(l => l.isEnabled).forEach(x => {
+			this.targets.push(...x.getter());
+		});
+		console.log(this.targets);
 	}
 
-	loadNorthAmerica()
-	{
-		this.targets.push(new Target(64.25, -51.75,"Nuuk","Greenland"));
-		this.targets.push(new Target(15.25, -61.5,"Roseau","Dominica"));
-		this.targets.push(new Target(10.5, -61.5,"Port of Spain","Trinidad and Tobago"));
-
-		this.targets.push(new Target(34, -118,"Los Angeles","USA","California"));
-		this.targets.push(new Target(36.25, -115.25,"Las Vegas","USA","Nevada"));
-		this.targets.push(new Target(43.5, -116.25,"Boise","USA","Idaho"));
-		this.targets.push(new Target(32.75, -96.75,"Dallas","USA","Texas"));
-		this.targets.push(new Target(41.25, -96,"Omaha","USA","Nebraska"));
-		this.targets.push(new Target(38.25, -85.75,"Louisville","USA","Kentucky"));
-		this.targets.push(new Target(41.75, -87.75,"Chicago","USA","Illinois"));
-		this.targets.push(new Target(40.75, -74,"New York","USA","New York"));
-		this.targets.push(new Target(39, -77,"Washington, D.C.","USA"));
-		this.targets.push(new Target(25.75, -80.25,"Miami","USA","Florida"));
-		this.targets.push(new Target(35, -85.25,"Chattanooga","USA","Tennessee"));
-		this.targets.push(new Target(58.25, -134.5,"Juneau","USA","Alaska"));
-		this.targets.push(new Target(61.25, -150,"Anchorage","USA","Alaska"));
-
-		this.targets.push(new Target(43.5, -79.5,"Toronto","Canada","Ontario"));
-		this.targets.push(new Target(45.5, -75.75,"Ottawa","Canada","Ontario"));
-		this.targets.push(new Target(45.5, -73.5,"Montreal","Canada","Quebec"));
-		this.targets.push(new Target(53.5, -113.5,"Edmonton","Canada","Alberta"));
-		this.targets.push(new Target(49.25, -123,"Vancouver","Canada","British Columbia"));
-		this.targets.push(new Target(47.5, -52.75,"St. John's","Canada","Newfoundland"));
-		this.targets.push(new Target(82.5,-62.5,"Alert","Canada","Nunavut"));
-
-		this.targets.push(new Target(19.5, -99,"Ciudad de México","Mexico"));
-		this.targets.push(new Target(24,-110.25,"La Paz","Mexico","Baja California Sur"));
-		this.targets.push(new Target(25.75, -100.25,"Monterrey","Mexico","Nuevo León"));
-		this.targets.push(new Target(21, -89.5,"Mérida","Mexico", "Yucatán"));
-		this.targets.push(new Target(31.75, -106.5,"Ciudad Juárez","Mexico", "Chihuahua"));
-		this.targets.push(new Target(20.75, -103.25,"Guadalajara","Mexico", "Jalisco"));
-
-		this.targets.push(new Target(23, -82.25, "Havana", "Cuba"));
-		this.targets.push(new Target(9, -79.5, "Panama City", "Panama"));
-		this.targets.push(new Target(10, -84, "San José", "Costa Rica"));
-		this.targets.push(new Target(17.25, -88.75, "Belmopan", "Belize","Cayo"));
-		this.targets.push(new Target(12, -86.25,"Managua","Nicaragua"));
-		this.targets.push(new Target(13.75, -89.25, "San Salvador", "El Salvador"));
-		this.targets.push(new Target(14, -87.25, "Tegucigalpa", "Honduras", "Francisco Morazán"));
-		this.targets.push(new Target(14.5, -90.5, "Guatemala City", "Guatemala"));
-
-		this.targets.push(new Target(18.25, -66, "San Juan", "Puerto Rico"));
-		this.targets.push(new Target(18.5, -72.25, "Port-au-Prince", "Haiti", "Ouest"));
-		this.targets.push(new Target(18.5, -70, "Santo Domingo", "Dominican Republic", "National"));
-		this.targets.push(new Target(18, -76.75, "Kingston", "Jamaica","Surrey"));
-		this.targets.push(new Target(13, -61.25, "Kingstown", "Saint Vincent and the Grenadines"));
-		this.targets.push(new Target(25, -77.25, "Nassau", "Bahamas","New Providence"));
-		this.targets.push(new Target(12.25, -69, "Willemstad", "Curaçao"));
-		
-		this.targets.push(new Target(17.25,-62.75,"Basseterre","Saint Kitts and Nevis"));
-		this.targets.push(new Target(13,-59.5,"Bridgetown","Barbados","St Michael"));
-		this.targets.push(new Target(14,-61,"Castries","Saint Lucia"));
-		this.targets.push(new Target(12,-61.75,"St. George's","Grenada"));
-		this.targets.push(new Target(17,-62,"St. John's","Antigua and Barbuda"));
+	filterCapitals(){
+		this.targets = this.targets.filter(x => x.isCapital);
 	}
 
-	loadSouthAmerica()
-	{
-		this.targets.push(new Target(6.75, -58,"Georgetown","Guyana","Demerara-Mahaica"));
-		this.targets.push(new Target(10.5, -67,"Caracas","Venezuela"));
-		this.targets.push(new Target(10.75, -71.75,"Maracaibo","Venezuela","Zulia"));
-		this.targets.push(new Target(4.5, -74,"Bogota","Colombia"));
-		this.targets.push(new Target(11, -74.75,"Baranquilla","Colombia","Atlántico"));
-		this.targets.push(new Target(6.25, -75.5,"Medellín","Colombia","Antioquia"));
-		this.targets.push(new Target(-0.25, -78.5,"Quito","Ecuador"));
-		this.targets.push(new Target(-2.25, -80,"Guayaquil","Ecuador","Guayas"));
-		this.targets.push(new Target(-12, -77,"Lima","Peru"));
-		this.targets.push(new Target(-3.75, -73.25,"Iquitos","Peru","Loreto"));
-		this.targets.push(new Target(-33.5, -70.75,"Santiago","Chile","Magallanes"));
-		this.targets.push(new Target(-53.25, -71,"Punta Arenas","Chile","Magallanes"));
-		this.targets.push(new Target(-15.75, -48,"Brasilia","Brazil","Central-West"));
-		this.targets.push(new Target(-3.75, -38.5,"Fortaleza","Brazil","Ceará"));
-		this.targets.push(new Target(-23, -43.25,"Rio de Janeiro","Brazil"));
-		this.targets.push(new Target(-13, -38.5,"Salvador","Brazil","Bahia"));
-		this.targets.push(new Target(-3, -60,"Manaus","Brazil","Amazonas"));
-		this.targets.push(new Target(-23.5, -46.75,"São Paulo","Brazil"));
-		this.targets.push(new Target(-25.25, -57.5,"Asuncion","Paraguay"));
-		this.targets.push(new Target(-34.75, -58.5,"Buenos Aires","Argentina"));
-		this.targets.push(new Target(-31.5, -64.25,"Córdoba","Argentina"));
-		this.targets.push(new Target(-46, -67.5,"Comodoro Rivadavia","Argentina","Chubut"));
-		this.targets.push(new Target(-34.75, -56.25,"Montevideo","Uruguay"));
-		this.targets.push(new Target(5, -52.25,"Cayenne","French Guiana"));
-		this.targets.push(new Target(5.75, -55.25,"Paramaribo","Suriname"));
-		this.targets.push(new Target(-16.5, -68.25,"La Paz","Bolivia"));
-		this.targets.push(new Target(-19, -65.25,"Sucre","Bolivia","Chuquisaca"));
-		this.targets.push(new Target(-51.75, -58,"Stanley","Falkland Islands"));
-		this.targets.push(new Target(-27.25, -109.5,"Easter Island","Chile"));
+	loadCustomLocations(jsonLocationString){
+		try
+		{
+			const customLocations = JSON.parse(jsonLocationString);
+			this.targets.push(customLocations);
+		}
+		catch(error)
+		{
+			console.error("Custom locations parsing error - "+error.toString());
+		}
 	}
-
-	loadEurope()
-	{
-		this.targets.push(new Target(50.25,19,"Katowice","Poland","Silesian"));
-		this.targets.push(new Target(54.5,18.5,"Gdańsk","Poland","Pomeranian"));
-		this.targets.push(new Target(52.25,21,"Warsaw","Poland","Masovian"));
-		this.targets.push(new Target(53.5,14.5,"Szczecin","Poland","West Pomeranian"));
-		this.targets.push(new Target(48,17,"Bratislava","Slovakia"));
-		this.targets.push(new Target(48.25,16.5,"Vienna","Austria"));
-		this.targets.push(new Target(50,14.5,"Prague","Czechia"));
-		this.targets.push(new Target(48,37.5,"Donetsk","Ukraine"));
-		this.targets.push(new Target(41.25,19.75,"Tirane","Albania"));
-		this.targets.push(new Target(44.75, 20.5,"Belgrade","Serbia"));
-		this.targets.push(new Target(38, 23.75,"Athens","Greece", "Attica"));
-		this.targets.push(new Target(40, 22.25,"Mount Olympus","Greece", "Thessaly/Macedonia border"));
-		this.targets.push(new Target(42, 12.5,"Rome","Italy", "Latium"));
-		this.targets.push(new Target(42, 12.5,"Vatican City","Holy See"));
-		this.targets.push(new Target(60.25, 25,"Helsinki","Finland", "Uusimaa"));
-		this.targets.push(new Target(66.5, 25.75,"Rovaniemi","Finland", "Lapland"));
-		this.targets.push(new Target(59.5, 18,"Stockholm","Sweden"));
-		this.targets.push(new Target(57.75, 12,"Gothenburg","Sweden"));
-		this.targets.push(new Target(60,10.75,"Oslo","Norway", "Eastern Norway"));
-		this.targets.push(new Target(67.25,14.5,"Bodø","Norway", "Nordland"));
-		this.targets.push(new Target(49, 2.5,"Paris","France"));
-		this.targets.push(new Target(48.25, 11.5,"Munich","Germany","Bavaria"));
-		this.targets.push(new Target(51.5,-2.5,"Bristol","United Kingdom"));
-		this.targets.push(new Target(53.5,-3,"Liverpool","United Kingdom","Merseyside"));
-		this.targets.push(new Target(53.5,-2.25,"Manchester","United Kingdom"));
-		this.targets.push(new Target(55,-1.5,"Newcastle upon Tyne","United Kingdom","Tyne and Wear"));
-		this.targets.push(new Target(64.25,-22,"Reykjavík","Iceland","Höfuðborgarsvæðið"));
-		this.targets.push(new Target(47.25, 8.5,"Zürich","Switzerland"));
-		this.targets.push(new Target(54.75, 56,"Ufa","Russia","Bashkortostan"));
-		this.targets.push(new Target(55.75, 37.5,"Moscow","Russia"));
-		this.targets.push(new Target(60, 30.25,"Saint Petersburg","Russia"));
-		this.targets.push(new Target(55, 83,"Novosibirsk","Russia"));
-		this.targets.push(new Target(57, 60.5,"Yekaterinburg","Russia","Sverdlovsk"));
-		this.targets.push(new Target(43, 132,"Vladivostok","Russia","Primorsky"));
-		this.targets.push(new Target(62, 129.75,"Yakutsk","Russia","Sakha Rep."));
-
-		this.targets.push(new Target(40.5, -3.5,"Madrid","Spain"));
-		this.targets.push(new Target(78.25, 15.5, "Longyearbyen", "Norway","Svalbard"))
-
-		this.targets.push(new Target(52.5,5,"Amsterdam","The Netherlands","North Holland"));
-		this.targets.push(new Target(52,4.25,"The Hague","The Netherlands","South Holland"));
-		this.targets.push(new Target(42.5,1.5,"Andorra la Vella","Andorra"));
-		this.targets.push(new Target(52.5,13.5,"Berlin","Germany"));
-		this.targets.push(new Target(53.5,10,"Hamburg","Germany"));
-		this.targets.push(new Target(50,8.75,"Frankfurt am Main","Germany","Hesse"));
-		this.targets.push(new Target(47,7.5,"Bern","Switzerland"));
-		this.targets.push(new Target(51,4.25,"Brussels","Belgium"));
-		this.targets.push(new Target(44.5,26,"Bucharest","Romania"));
-		this.targets.push(new Target(47.5,19,"Budapest","Hungary"));
-		this.targets.push(new Target(47,29,"Chișinău","Moldova"));
-		this.targets.push(new Target(55.75,12.5,"Copenhagen","Denmark"));
-		this.targets.push(new Target(53.25,-6.25,"Dublin","Ireland","Leinster"));
-		this.targets.push(new Target(52,-8.5,"Cork","Ireland","Munster"));
-		this.targets.push(new Target(50.5,30.5,"Kyiv","Ukraine"));
-		this.targets.push(new Target(38.75,-9.25,"Lisbon","Portugal"));
-		this.targets.push(new Target(41.25,-8.5,"Porto","Portugal","Norte"));
-		this.targets.push(new Target(46.25,14.5,"Ljubljana","Slovenia")); //+0.25 N
-		this.targets.push(new Target(51.5,0,"City of London","United Kingdom","Greater London"));
-		this.targets.push(new Target(49.75,6,"Luxembourg City","Luxembourg")); //+0.25 N
-
-		this.targets.push(new Target(53.75,27.5,"Minsk","Belarus"));
-		this.targets.push(new Target(43.75,7.5,"Monte Carlo","Monaco"));
-		this.targets.push(new Target(42.5,19.25,"Podgorica","Montenegro"));
-		this.targets.push(new Target(57, 24,"Riga","Latvia"));
-		this.targets.push(new Target(44,12.5,"San Marino","San Marino"));
-		this.targets.push(new Target(44,18.5,"Sarajevo","Bosnia and Herzegovina"));
-		this.targets.push(new Target(42,21.5,"Skopje","North Macedonia"));
-		this.targets.push(new Target(42.75,23.25,"Sofia","Bulgaria"));
-		this.targets.push(new Target(59.5,24.75,"Tallinn","Estonia","Harju"));
-		this.targets.push(new Target(47,9.75,"Vaduz","Liechtenstein")); //+0.25 E
-		this.targets.push(new Target(36,14.5,"Valletta","Malta","South Eastern"));
-		this.targets.push(new Target(54.75,25.25,"Vilnius","Lithuania"));
-		this.targets.push(new Target(45.75,16,"Zagreb","Croatia"));
-		this.targets.push(new Target(42.75,21.25,"Pristina","Kosovo"));
-		this.targets.push(new Target(56,-3.25,"Edinburgh","United Kingdom","Scotland"));
-		this.targets.push(new Target(54.5,-5.75,"Belfast","United Kingdom","Northern Ireland")); //-0.25 W
-		this.targets.push(new Target(51.5,-3,"Cardiff","United Kingdom","Wales"));
-
-		this.targets.push(new Target(38.25,13.5,"Palermo","Italy","Sicily"));
-		this.targets.push(new Target(45,7.75,"Turin","Italy","Piedmont"));
-		this.targets.push(new Target(45.5,9.25,"Milan","Italy","Lombardy"));
-		this.targets.push(new Target(41,17,"Bari","Italy"));
-		this.targets.push(new Target(42,8.75,"Ajaccio","France","Corsica"));
-		this.targets.push(new Target(45.75,4.75,"Lyon","France","Auvergne-Rhône-Alpes"));
-		this.targets.push(new Target(47.25,-1.5,"Nantes","France","Pays de la Loire"));
-		this.targets.push(new Target(43.25,5.25,"Marseille","France","Alpes-Côte d'Azur"));
-		this.targets.push(new Target(41.5,2.25,"Barcelona","Spain","Catalonia"));
-		this.targets.push(new Target(37.5,-6,"Seville","Spain","Andalusia"));
-		this.targets.push(new Target(43.25,-3,"Bilbao","Spain","Basque Country"));
-		this.targets.push(new Target(39.5,-0.25,"Valencia","Spain","Basque Country"));
-	}
-
-	loadAfrica()
-	{
-		this.targets.push(new Target(13.5,2,"Niamey","Niger"));
-		this.targets.push(new Target(2,45.5,"Mogadishu","Somalia"));
-		this.targets.push(new Target(-19,47.5,"Antananarivo","Madagascar","Analamanga"));
-		this.targets.push(new Target(-34,18.5,"Cape Town","South Africa","Western Cape"));
-		this.targets.push(new Target(-25.75,28.25,"Pretoria","South Africa","Western Cape"));
-		this.targets.push(new Target(-26.25,28,"Johannesburg","South Africa","Gauteng"));
-		this.targets.push(new Target(33.5,-7.5,"Casablanca","Morocco","Casablanca-Settat"));
-		this.targets.push(new Target(37,10.25,"Tunis","Tunisia"));
-		this.targets.push(new Target(5,31.5,"Juba","South Sudan"));
-		this.targets.push(new Target(12,15,"N'Djamena","Chad"));
-		this.targets.push(new Target(-6.25, 35.75,"Dodoma","Tanzania"));
-		this.targets.push(new Target(-7,39.25,"Dar es Salaam","Tanzania"));
-		this.targets.push(new Target(-20,57.5,"Port Louis","Mauritius"));
-		this.targets.push(new Target(-21,55.5,"Saint-Denis","Reunion"));
-		this.targets.push(new Target(-14,33.75,"Lilongwe","Malawi","Central"));
-		this.targets.push(new Target(4,11.5,"Yaoundé","Cameroon","Central"));
-		this.targets.push(new Target(30,31,"Gisa","Egypt"));
-		this.targets.push(new Target(30,31.25,"Cairo","Egypt"));
-		this.targets.push(new Target(24,33,"Asuan","Egypt"));
-		this.targets.push(new Target(-4.25,15.25,"Brazzaville","Congo"));
-
-		this.targets.push(new Target(36.75,3,"Algiers","Algeria"));
-		this.targets.push(new Target(22.75,5.5,"Tamanrasset","Algeria"));
-		this.targets.push(new Target(33,13.25,"Tripoli","Libya","Tripolitania"));
-		this.targets.push(new Target(12.75,-8,"Bamako","Mali"));
-		this.targets.push(new Target(4.25,18.75,"Bangi","Central African Republic")); //+0.25 E
-		this.targets.push(new Target(15.5,32.5,"Khartoum","Sudan"));
-		this.targets.push(new Target(18,-16,"Nouakchott","Mauritania"));
-
-		this.targets.push(new Target(9,7.5,"Abuja","Nigeria"));
-		this.targets.push(new Target(9.5,-13.75,"Conakry","Guinea"));
-		this.targets.push(new Target(11.75,-15.5,"Bissau","Guinea-Bissau"));
-		this.targets.push(new Target(9,38.75,"Addis Ababa","Ethiopia"));
-		this.targets.push(new Target(14.75,-17.5,"Dakar","Senegal"));
-		this.targets.push(new Target(12.5,-1.5,"Ouagadougou","Burkina Faso","Centre"));
-
-		this.targets.push(new Target(15.25,39,"Asmara","Eritrea","Central"));
-		this.targets.push(new Target(5.5,-0.25,"Accra","Ghana"));
-		this.targets.push(new Target(13.5,-16.5,"Banjul","Gambia"));
-		this.targets.push(new Target(11.5,43.25,"Djibouti City","Djibouti"));
-		this.targets.push(new Target(8.5,-13.25,"Freetown","Sierra Leone","Western Area"));
-		this.targets.push(new Target(-24.75,26,"Gaborone","Botswana"));
-		this.targets.push(new Target(-3.5,30,"Gitega","Burundi"));
-		this.targets.push(new Target(-17.75,31,"Harare","Zimbabwe"));
-		this.targets.push(new Target(0.25,32.5,"Kampala","Uganda"));
-		this.targets.push(new Target(-2,30,"Kigali","Rwanda"));
-
-		this.targets.push(new Target(0.5,9.5,"Libreville","Gabon","Estuaire"));
-		this.targets.push(new Target(6,1.25,"Lomé","Togo","Maritime"));
-		this.targets.push(new Target(-8.75,13.25,"Luanda","Angola"));
-		this.targets.push(new Target(-15.5,28.25,"Lusaka","Zambia"));
-		this.targets.push(new Target(3.75,8.75,"Malabo","Equatorial Guinea","Bioko Norte"));
-		this.targets.push(new Target(-26,32.5,"Maputo","Mozambique"));
-		this.targets.push(new Target(-29.5,27.75,"Maseru","Lesotho"));
-		this.targets.push(new Target(-26.25,31.25,"Mbabane","Eswatini"));
-		this.targets.push(new Target(6.25,-10.75,"Monrovia","Liberia"));
-		this.targets.push(new Target(-11.75,43.25,"Moroni","Comoros","Grande Comore"));
-		this.targets.push(new Target(-1.25,36.75,"Nairobi","Kenya"));
-		this.targets.push(new Target(-4.5,15.25,"Kinshasa","Democratic Rep. of the Congo"));
-		this.targets.push(new Target(0.5,25.25,"Kisangani","Democratic Rep. of the Congo"));
-
-		this.targets.push(new Target(6.5,2.5,"Porto-Novo","Benin","Ouémé"));
-		this.targets.push(new Target(15,-23.5,"Praia","Cape Verde","Santiago"));
-		this.targets.push(new Target(34,-6.75,"Rabat","Morocco"));
-		this.targets.push(new Target(0.25,6.75,"São Tomé","São Tomé and Príncipe"));
-		this.targets.push(new Target(-4.5,55.5,"Victoria","Seychelles","Mahé"));
-		this.targets.push(new Target(-22.5,17,"Windhoek","Namibia","Khomas"));
-		this.targets.push(new Target(6.75,-5.25,"Yamoussoukro","Côte d'Ivoire"));
-	}
-	loadAsia()
-	{
-		this.targets.push(new Target(51, 71.5,"Astana","Kazakhstan"));
-		this.targets.push(new Target(50.25, 57.25,"Aktobe","Kazakhstan"));
-		this.targets.push(new Target(43, 74.5,"Bishkek","Kyrgyzstan"));
-		this.targets.push(new Target(38.5, 68.75,"Dushanbe","Tajikistan"));
-		this.targets.push(new Target(41.25, 69.25,"Tashkent","Uzbekistan"));
-		this.targets.push(new Target(41, 29,"Istanbul","Turkey"));
-		this.targets.push(new Target(41.75, 44.75,"Tbilisi","Georgia"));
-		this.targets.push(new Target(40, 44.5,"Yerevan","Armenia"));
-		this.targets.push(new Target(40.5, 50,"Baku","Azerbaijan"));
-		this.targets.push(new Target(33.5, 44.5,"Baghdad","Iraq"));
-		this.targets.push(new Target(38, 58.5,"Ashgabat","Turkmenistan"));
-		this.targets.push(new Target(35.75, 51.5,"Tehran","Iran"));
-		this.targets.push(new Target(29.5, 52.5,"Shiraz","Iran","Fars"));
-		this.targets.push(new Target(34.5, 69,"Kabul","Afghanistan"));
-		this.targets.push(new Target(25, 67,"Karachi","Pakistan","Sindh"));
-		this.targets.push(new Target(23.5, 58.5,"Muscat","Oman"));
-		this.targets.push(new Target(28.5, 77,"New Delhi","India","Delhi"));
-		this.targets.push(new Target(24.5, 85,"Bodh Gaya","India","Bihar"));
-		this.targets.push(new Target(19, 73,"Mumbai","India","Maharashtra"));
-		this.targets.push(new Target(17.5, 78.5,"Hyderabad","India","Telangana"));
-		this.targets.push(new Target(22.5, 88.25,"Kolkata","India","West Bengal"));
-		this.targets.push(new Target(13, 77.5,"Bangalore","India","Karnataka"));
-
-		this.targets.push(new Target(27.5, 89.75,"Thimphu","Bhutan"));
-		this.targets.push(new Target(16.75, 96,"Yangon","Myanmar"));
-		this.targets.push(new Target(48, 107,"Ulaanbaatar","Mongolia"));
-		this.targets.push(new Target(29.5, 106.5,"Chongqing","China","Yuzhong"));
-		this.targets.push(new Target(31, 121.5,"Shanghai","China"));
-		this.targets.push(new Target(40, 116.5,"Beijing","China"));
-		this.targets.push(new Target(36, 103.75,"Lanzhou","China","Gansu"));
-		this.targets.push(new Target(43.75, 87.5,"Ürümqi","China","Xinjiang Uygur AR / East Turkestan"));
-		this.targets.push(new Target(22.25, 114.25,"Hong Kong", "China","SAR"));
-		this.targets.push(new Target(22.25, 113.5,"Macau","China","SAR"));
-		this.targets.push(new Target(29.5, 91,"Lhasa","China","Tibet AR"));
-
-		this.targets.push(new Target(1.25, 104,"Singapore","Singapore"));
-		this.targets.push(new Target(-6.25, 107,"Jakarta","Indonesia"));
-		this.targets.push(new Target(-5.25, 119.5,"Makassar","Indonesia","Sulawesi"));
-		this.targets.push(new Target(-0.5, 117.25,"Samarinda","Indonesia","East Kalimantan"));
-		this.targets.push(new Target(3.5, 98.75,"Medan","Indonesia","North Sumatra"));
-		this.targets.push(new Target(-2.5, 140.75,"Jayapura","Indonesia","Papua"));
-		this.targets.push(new Target(35.5, 140,"Tokyo","Japan"));
-		this.targets.push(new Target(43, 141.25,"Sapporo","Japan","Hokkaido"));
-		this.targets.push(new Target(33.5, 130.5,"Fukuoka","Japan","Kyushu"));
-		this.targets.push(new Target(34.75, 135.75,"Osaka","Japan","Kansai"));
-
-		this.targets.push(new Target(39,125.75,"Pyongyang","North Korea"));
-		this.targets.push(new Target(37.5,127,"Seoul","South Korea"));
-		this.targets.push(new Target(35.25,129,"Busan","South Korea","Yeongnam"));
-		this.targets.push(new Target(25,121.5,"Taipei","Republic of China","Taiwan"));
-		this.targets.push(new Target(23.75,90.25,"Dhaka","Bangladesh"));
-		this.targets.push(new Target(33.75,73,"Islamabad","Pakistan"));
-		this.targets.push(new Target(27.75,85.25,"Kathmandu","Nepal","Bagmati"));
-		this.targets.push(new Target(4.25,73.5,"Malé","Maldives"));
-		this.targets.push(new Target(7,80,"Sri Jayawardenepura Kotte","Sri Lanka","Western"));
-		this.targets.push(new Target(4.75,115,"Bandar Seri Begawan","Brunei"));
-		this.targets.push(new Target(13.75,100.5,"Bangkok","Thailand"));
-
-		this.targets.push(new Target(-8.75,125.5,"Dili","East Timor")); //-0.25 S
-		this.targets.push(new Target(21,105.75,"Hanoi","Vietnam","Red River Delta"));
-		this.targets.push(new Target(3.25,101.75,"Kuala Lumpur","Malaysia"));
-		this.targets.push(new Target(14.5,121,"Manila","Philippines"));
-		this.targets.push(new Target(7,125.5,"Davao","Philippines"));
-		this.targets.push(new Target(19.75,96,"Naypyidaw","Myanmar"));
-		this.targets.push(new Target(11.5,105,"Phnom Penh","Cambodia"));
-		this.targets.push(new Target(18,102.5,"Vientiane","Laos"));
-		
-		this.targets.push(new Target(24.5,54.25,"Abu Dhabi","United Arab Emirates"));
-		this.targets.push(new Target(32,36,"Amman","Jordan"));
-		this.targets.push(new Target(40,33,"Ankara","Turkey","Central Anatolia"));
-		this.targets.push(new Target(40,41.25,"Erzurum","Turkey"));
-		this.targets.push(new Target(34,35.5,"Beirut","Lebanon"));
-		this.targets.push(new Target(33.5,36.25,"Damascus","Syria"));
-		this.targets.push(new Target(25.25,51.5,"Doha","Qatar"));
-		this.targets.push(new Target(31.75,35.25,"Jerusalem",""));
-		this.targets.push(new Target(32,34.75,"Tel Aviv","Israel"));
-		this.targets.push(new Target(32,35.5,"Jericho","Palestine"));
-		this.targets.push(new Target(29.25,48,"Kuwait City","Kuwait"));
-		this.targets.push(new Target(26.25,50.5,"Manama","Bahrain"));
-		this.targets.push(new Target(24.5,46.75,"Riyadh","Saudi Arabia"));
-		this.targets.push(new Target(15.25,44.25,"Sana'a","Yemen"));
-		this.targets.push(new Target(35.25,33.5,"Nicosia","Republic of Cyprus"));
-	}
-
-	loadOceania()
-	{
-		this.targets.push(new Target(-37, 174.75,"Auckland","New Zealand"));
-		this.targets.push(new Target(-43.5, 172.75,"Christchurch","New Zealand","Canterbury"));
-		this.targets.push(new Target(-41.25, 174.75,"Wellington","New Zealand"));
-
-		this.targets.push(new Target(-32, 116.25,"Perth","Australia","Western Australia"));
-		this.targets.push(new Target(-18, 122.25,"Broome","Australia","Western Australia"));
-		this.targets.push(new Target(-34, 151.25,"Sydney","Australia","New South Wales"));
-		this.targets.push(new Target(-35.25, 149,"Canberra","Australia","Capital Territory"));
-		this.targets.push(new Target(-23.75, 134,"Alice Springs","Australia","Northern Territory"));
-		this.targets.push(new Target(-37.75, 145,"Melbourne","Australia","Victoria"));
-		this.targets.push(new Target(-19.25, 146.75,"Tonwsville","Australia","Queensland"));
-		this.targets.push(new Target(-43, 147.25,"Hobart","Australia","Tasmania"));
-		this.targets.push(new Target(-27.5, 153,"Brisbane","Australia","Queensland"));
-		this.targets.push(new Target(-35, 138.5,"Adelaide","Australia","South Australia"));
-		this.targets.push(new Target(-43, 147.25,"Hobart","Australia","Tasmania"));
-
-		this.targets.push(new Target(-9.5, 147.25, "Port Moresby", "Papua New Guinea"));
-		this.targets.push(new Target(-18.25, 178.5,"Suva","Fiji","Central"));
-		this.targets.push(new Target(1.25,173,"South Tarawa","Kiribati"));
-		this.targets.push(new Target(-9.5,160,"Honiara","Solomon Islands"));
-		this.targets.push(new Target(-21.25,-175.25,"Nuku'alofa","Tonga","Tongatapu"));
-		this.targets.push(new Target(-8.5,179.25,"Funafuti","Tuvalu"));
-		this.targets.push(new Target(-0.5,167,"Yaren","Nauru"));
-		this.targets.push(new Target(7,171.25,"Majuro","Marshall Islands","Ratak Chain"));
-		this.targets.push(new Target(-17.75,168.25,"Port Vila","Vanuatu","Shefa"));
-		this.targets.push(new Target(7.5,134.75,"Ngerulmud","Palau","Melekeok"));
-		this.targets.push(new Target(-13.75,-171.75,"Apia","Samoa","Tuamasaga"));
-		this.targets.push(new Target(7,158.25,"Palikir","Micronesia","Pohnpei"));
-
-		this.targets.push(new Target(21.25, -157.75,"Honolulu","USA","Hawaii"));
-		this.targets.push(new Target(-22.25, 166.5,"Nouméa","New Caledonia"));
-	}
-
 
 	loadTargets(){
-		this.loadNorthAmerica();
-		this.loadSouthAmerica();
-		this.loadAfrica();
-		this.loadEurope();
-		this.loadAsia();
-		this.loadOceania();
+		const currentSettings = new Settings();
+		this.loadStandardLocations(currentSettings);
+		if (currentSettings.IsCustomEnabled)
+		{
+			this.loadCustomLocations(currentSettings.CustomLocationsJson);
+		}
+		if (currentSettings.IsCapitalsOnly)
+		{
+			this.filterCapitals();
+		}
+		return;
 	}
 
 	shuffleTargets(){
@@ -589,7 +267,7 @@ class GameState {
 			levelArray[i].WithPoints(this.grabTargets(currentId, targetCount));
 			currentId = currentId + targetCount + 1;
 		}
-		return levelArray.slice(0, levelCount);
+		return levelArray.slice(0, levelCount).filter(x => x.targetsCount > 0);
 	}
 
 	GetHemisphere(lat, lng) {
@@ -675,6 +353,7 @@ class GameView {
 		this.levelMenuLbl = document.getElementById('menu-next-level');
 		this.scoreMenuLbl = document.getElementById('menu-final-score');
 		this.gameStartBtn = this.mainMenuElement.querySelector('#start-game-btn');
+		this.settingsBtn = this.mainMenuElement.querySelector('#settings-btn');
 		//bar
 		this.levelLbl = document.getElementsByClassName('game-current-level')[0];
 		this.currentScoreLbl = document.getElementsByClassName('game-current-score')[0];
@@ -836,8 +515,11 @@ class Globetrotter {
 		this.ctxTarget = this.canvasTarget.getContext('2d');
 
 		this.mainMenuElement = document.getElementById('main-menu');
+		this.settingsElement = document.getElementById('settings-menu');
 		this.gameStateElement = document.querySelector('.game-state');
 		this.gameStartBtn = this.mainMenuElement.querySelector('#start-game-btn');
+		this.settingsBtn = this.mainMenuElement.querySelector('#settings-btn');
+		this.settingsExitBtn = document.getElementById('settings-exit-btn');
 		this.gameTitleElement = document.querySelector('.globetrotter-game-title');
 
 		this.nextBtn = document.getElementsByClassName('context-menu-next-target-btn')[0];
@@ -1175,6 +857,23 @@ class Globetrotter {
 		});
 	}
 
+	handleSettings(e){
+		document.querySelector('#settings-menu').style.display = 'initial';
+	}
+
+	handleExitSettings(e){
+		document.querySelector('#settings-menu').style.display = 'none';
+		this.gameState.ReloadLevels();
+		if (this.gameState.levels.length == 0)
+		{
+			this.gameStartBtn.setAttribute("disabled", "disabled");
+		}
+		else
+		{
+			this.gameStartBtn.removeAttribute("disabled");
+		}
+	}
+
 	handleStart(e){
 		this.gameStateElement.style.display = 'grid';
 		this.gameTitleElement.style.display = 'none';
@@ -1248,6 +947,8 @@ class Globetrotter {
 		this.canvasTarget.addEventListener('click', this.handleClick.bind(this));
 		this.canvasTarget.addEventListener('wheel', this.handleWheel.bind(this));
 		this.gameStartBtn.addEventListener('click', this.handleStart.bind(this));
+		this.settingsBtn.addEventListener('click', this.handleSettings.bind(this));
+		this.settingsExitBtn.addEventListener('click', this.handleExitSettings.bind(this));
 		this.nextBtn.addEventListener('click', this.handleNext.bind(this));
 		document.addEventListener('keydown', this.handleKey.bind(this));
 		document.addEventListener('RunOutOfTime', this.handleRunOutOfTime.bind(this));
@@ -1265,8 +966,8 @@ class Globetrotter {
 	}
 
 	DrawMainMenu(){
-		this.mainMenuElement.style.height = `${this.canvasMap.height}px`;
-		[this.mainMenuElement,this.gameStateElement,this.gameTitleElement].forEach((el) => {
+		this.mainMenuElement.style.height = this.settingsElement.style.height = `${this.canvasMap.height}px`;
+		[this.mainMenuElement,this.gameStateElement,this.gameTitleElement, this.settingsElement].forEach((el) => {
 			el.style.width = `${this.canvasMap.width}px`;;
 		});
 	}
