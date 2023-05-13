@@ -203,18 +203,23 @@ class GameState {
 		locationsFunctionsMap.filter(l => l.isEnabled).forEach(x => {
 			this.targets.push(...x.getter());
 		});
-		console.log(this.targets);
 	}
 
 	filterCapitals(){
 		this.targets = this.targets.filter(x => x.isCapital);
 	}
 
+	getProperTargetObject(parsedObject) {
+		return new Target(parsedObject.lat, parsedObject.lng, parsedObject.name, parsedObject.country, parsedObject.region, parsedObject.isCapital);
+	}
+
 	loadCustomLocations(jsonLocationString){
 		try
 		{
 			const customLocations = JSON.parse(jsonLocationString);
-			this.targets.push(customLocations);
+			customLocations.forEach(l => {
+				this.targets.push(this.getProperTargetObject(l));
+			});
 		}
 		catch(error)
 		{
@@ -441,7 +446,6 @@ class GameView {
 
 		const ctxPos = this.hemisphereCtxMenuPos[this.hemisphereMapper[targetHemisphere][guessHemisphere]];
 		this.ctxMenuElement.style.display = 'block';
-		console.log(ctxPos);
 		this.SetCtxMenuPosition(ctxPos);
 
 		this.ctxMenuDistErrorLbl.innerText = result.distance.toFixed(0);
@@ -518,7 +522,10 @@ class Globetrotter {
 		this.settingsElement = document.getElementById('settings-menu');
 		this.gameStateElement = document.querySelector('.game-state');
 		this.gameStartBtn = this.mainMenuElement.querySelector('#start-game-btn');
+
 		this.settingsBtn = this.mainMenuElement.querySelector('#settings-btn');
+		this.settingsBtn.style.display = 'initial';
+
 		this.settingsExitBtn = document.getElementById('settings-exit-btn');
 		this.gameTitleElement = document.querySelector('.globetrotter-game-title');
 
@@ -571,10 +578,12 @@ class Globetrotter {
 
 	saveClickedCoordinates(cursorPoint){
 		const point = this.getMapPoint(cursorPoint.x,cursorPoint.y);
+		/*
 		console.log("x: ",this.clickedPoint.x);
 		console.log("y: ",this.clickedPoint.y);
 		console.log("DIFF X: ",Math.abs(this.clickedPoint.x - point.x));
 		console.log("DIFF Y: ",Math.abs(this.clickedPoint.y - point.y));
+		*/
 		this.clickedPoint.x = point.x;
 		this.clickedPoint.y = point.y;
 	}
@@ -775,7 +784,6 @@ class Globetrotter {
 		if (this.isGuessing)
 		{
 			const cursorPoint = this.getCursorCoordinates(e);
-			console.log(cursorPoint.x, cursorPoint.y);
 			this.saveClickedCoordinates(cursorPoint);
 			const lat = this.GetLatitude(this.clickedPoint.y);
 			const lng = this.GetLongitude(lat, this.clickedPoint.x);
@@ -875,6 +883,7 @@ class Globetrotter {
 	}
 
 	handleStart(e){
+		this.settingsBtn.style.display = 'none';
 		this.gameStateElement.style.display = 'grid';
 		this.gameTitleElement.style.display = 'none';
 		this.mainMenuElement.style.display = 'none';
