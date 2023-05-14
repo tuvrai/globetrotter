@@ -252,6 +252,11 @@ class GameState {
 		return this.targets.slice(from, from+count + 1);
 	}
 
+	getRequiredScoreAdjustedToTargetCount(level)
+	{
+		return Math.floor(level.targetsCount/(level.id + 2) * level.requiredPoints);
+	}
+
 	getLevels(levelCount){
 		const levelArray = [
 			new Level(1, 350, 12),
@@ -272,7 +277,9 @@ class GameState {
 			levelArray[i].WithPoints(this.grabTargets(currentId, targetCount));
 			currentId = currentId + targetCount + 1;
 		}
-		return levelArray.slice(0, levelCount).filter(x => x.targetsCount > 0);
+		const levelArrayNoEmpty = levelArray.slice(0, levelCount).filter(x => x.targetsCount > 0);
+		levelArrayNoEmpty[levelArrayNoEmpty.length - 1].requiredPoints = this.getRequiredScoreAdjustedToTargetCount(levelArrayNoEmpty[levelArrayNoEmpty.length - 1]);
+		return levelArrayNoEmpty;
 	}
 
 	GetHemisphere(lat, lng) {
