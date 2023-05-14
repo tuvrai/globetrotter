@@ -1,6 +1,40 @@
 [
-    {"lat":51.5,"lng":7.5,"name":"Signal Iduna Park","country":"","region":"","isCapital":false},
     {"lat":53.5,"lng":-3,"name":"Anfield","country":"","region":"","isCapital":false},
+    {"lat":41,"lng":14.25,"name":"Stadio Diego Armando Maradona","country":"","region":"","isCapital":false},
+    {"lat":52.25,"lng":5,"name":"Johan Cruyff Arena","country":"","region":"","isCapital":false},
+    {"lat":56,"lng":-4.25,"name":"Ibrox Stadium","country":"","region":"","isCapital":false},
+    
+    {"lat":41.25,"lng":-8.5,"name":"Estádio do Dragão","country":"","region":"","isCapital":false},
+    {"lat":51.25,"lng":3.25,"name":"Jan Breydel Stadium","country":"","region":"","isCapital":false},
+    {"lat":51,"lng":7,"name":"BayArena","country":"","region":"","isCapital":false},
+    {"lat":40.5,"lng":-3.5,"name":"Estadio Metropolitano","country":"","region":"","isCapital":false},
+
+    {"lat":48.25,"lng":11.5,"name":"Allianz Arena","country":"","region":"","isCapital":false},
     {"lat":41.25,"lng":2,"name":"Camp Nou","country":"","region":"","isCapital":false},
+    {"lat":45.5,"lng":9,"name":"San Siro","country":"","region":"","isCapital":false},
+    {"lat":49.75,"lng":13.5,"name":"Doosan Arena","country":"","region":"","isCapital":false},
+
+    {"lat":51.5,"lng":0,"name":"Tottenham Hotspur Stadium","country":"","region":"","isCapital":false},
+    {"lat":50,"lng":8.5,"name":"Waldstadion","country":"","region":"","isCapital":false},
+    {"lat":38.75,"lng":-9.5,"name":"Estádio José Alvalade","country":"","region":"","isCapital":false},
+    {"lat":43.25,"lng":5.5,"name":"Stade Vélodrome","country":"","region":"","isCapital":false},
+
+    {"lat":51.5,"lng":-0.25,"name":"Stamford Bridge","country":"","region":"","isCapital":false},
+    {"lat":47.75,"lng":13,"name":"Red Bull Arena (Salzburg)","country":"","region":"","isCapital":false},
+    {"lat":45.5,"lng":16,"name":"Stadion Maksimir","country":"","region":"","isCapital":false},
+
+    {"lat":40.5,"lng":-3.75,"name":"Santiago Bernabéu","country":"","region":"","isCapital":false},
+    {"lat":51.25,"lng":12.25,"name":"Red Bull Arena (Leipzig)","country":"","region":"","isCapital":false},
+    {"lat":48,"lng":37.75,"name":"Donbass Area","country":"","region":"","isCapital":false},
+    {"lat":55.75,"lng":-4.25,"name":"Celtic Park","country":"","region":"","isCapital":false},
+
+    {"lat":51.5,"lng":7.5,"name":"Signal Iduna Park","country":"","region":"","isCapital":false},
+    {"lat":53.5,"lng":-2.25,"name":"Etihad Stadium","country":"","region":"","isCapital":false},
+    {"lat":37.5,"lng":-6,"name":"Ramón Sánchez Pizjuán Stadium","country":"","region":"","isCapital":false},
+    {"lat":55.75,"lng":12.5,"name":"Parken Stadium","country":"","region":"","isCapital":false},
+
+    {"lat":38.75,"lng":-9.25,"name":"Estádio da Luz","country":"","region":"","isCapital":false},
+    {"lat":45,"lng":7.5,"name":"Juventus Stadium","country":"","region":"","isCapital":false},
+    {"lat":32.75,"lng":35,"name":"Sammy Ofer Stadium","country":"","region":"","isCapital":false},
     {"lat":49,"lng":2.25,"name":"Parc des Princes","country":"","region":"","isCapital":false}
 ]
